@@ -1,0 +1,75 @@
+Backlash Analysis Results for data/newtestlog4.csv
+
+--- Performance Summary ---
+Best performance was in Test 2 with a score of 46.50%.
+A score under 100% is acceptable. Lower is better.
+
+2 out of 2 scored tests were acceptable (100.0%).
+
+
+--- Test: 2 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 1.0
+  BaseTorque: 3.0
+  GainTorque: 6.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 46.50%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 1.2600s (from   5.00s to   6.26s)
+  Event  2: Duration = 1.1400s (from  10.79s to  11.93s)
+  Event  3: Duration = 0.4600s (from  15.58s to  16.04s)
+  Event  4: Duration = 0.5600s (from  20.93s to  21.49s)
+  Event  5: Duration = 0.2500s (from  25.97s to  26.22s)
+  Event  6: Duration = 0.2900s (from  31.25s to  31.54s)
+  Event  7: Duration = 0.2300s (from  36.39s to  36.62s)
+  Event  8: Duration = 0.1300s (from  41.88s to  42.01s)
+  Event  9: Duration = 0.0700s (from  47.19s to  47.26s)
+  Event 10: Duration = 0.0200s (from  57.08s to  57.10s)
+  Event 11: Duration = 0.4200s (from  62.28s to  62.70s)
+  Event 12: Duration = 0.6400s (from  67.70s to  68.34s)
+  Event 13: Duration = 0.2400s (from  72.76s to  73.00s)
+  Event 14: Duration = 0.2590s (from  78.07s to  78.33s)
+  Event 15: Duration = 0.1700s (from  83.26s to  83.43s)
+  Event 16: Duration = 0.1900s (from  88.70s to  88.89s)
+
+--- Test: 1 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 1.0
+  BaseTorque: 3.0
+  GainTorque: 6.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 65.74%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 1.0900s (from   4.99s to   6.08s)
+  Event  2: Duration = 1.6300s (from  10.26s to  11.89s)
+  Event  3: Duration = 0.4700s (from  15.52s to  15.99s)
+  Event  4: Duration = 0.5290s (from  20.86s to  21.39s)
+  Event  5: Duration = 0.2590s (from  25.90s to  26.16s)
+  Event  6: Duration = 0.3000s (from  31.21s to  31.51s)
+  Event  7: Duration = 0.1500s (from  36.41s to  36.56s)
+  Event  8: Duration = 0.1600s (from  41.83s to  41.99s)
+  Event  9: Duration = 0.0500s (from  47.13s to  47.18s)
+  Event 10: Duration = 1.3280s (from  57.05s to  58.38s)
+  Event 11: Duration = 0.3300s (from  62.20s to  62.53s)
+  Event 12: Duration = 0.6490s (from  67.59s to  68.24s)
+  Event 13: Duration = 0.1390s (from  72.66s to  72.80s)
+  Event 14: Duration = 0.2500s (from  77.98s to  78.23s)
+  Event 15: Duration = 0.0900s (from  83.21s to  83.30s)
+  Event 16: Duration = 0.1800s (from  88.60s to  88.78s)
+

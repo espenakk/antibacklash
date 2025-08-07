@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'data/log.csv'
+file_path = 'Python/data/newtestlog5.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -13,7 +13,7 @@ except FileNotFoundError:
 
 # Prepare results file
 log_name = os.path.splitext(os.path.basename(file_path))[0]
-output_filename = f"data/results_from_{log_name}.txt"
+output_filename = f"Python/data/results_from_{log_name}.txt"
 
 # Convert timestamp to datetime objects
 df['Timestamp'] = pd.to_datetime(df['Timestamp'])
@@ -30,7 +30,10 @@ ANTIBACKLASH_MODE_MAP = {
     0: "Adaptive torque",
     1: "Constant torque",
     2: "Speed cmd offset",
-    3: "Slave drooping"
+    3: "Slave drooping",
+    4: "Actual position offset",
+    5: "Slave speed ref delay",
+    6: "Constrained slave acceleration"
 }
 
 def generate_plot(df_test, test_index, backlash_results, performance_score=None):
