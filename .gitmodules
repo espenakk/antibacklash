@@ -1,0 +1,6 @@
+[submodule "antibacklashlib"]
+	path = antibacklashlib
+	url = git@github.com:espenakk/antibacklashlib.git
+[submodule "antibacklashsys"]
+	path = antibacklashsys
+	url = git@github.com:espenakk/antibacklashsys.git
