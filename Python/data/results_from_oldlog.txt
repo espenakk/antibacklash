@@ -1,0 +1,650 @@
+Backlash Analysis Results for data/oldlog.csv
+
+--- Performance Summary ---
+Best performance was in Test 17 with a score of 88.55%.
+A score under 100% is acceptable. Lower is better.
+
+6 out of 16 scored tests were acceptable (37.5%).
+
+The following tests had unacceptable scores (>= 100%):
+  - Test 4: 100.51%
+  - Test 13: 103.26%
+  - Test 3: 103.47%
+  - Test 10: 106.75%
+  - Test 7: 109.26%
+  - Test 19: 109.78%
+  - Test 15: 111.38%
+  - Test 1: 114.12%
+  - Test 9: 119.33%
+  - Test 5: 121.69%
+
+The following tests were disqualified for not meeting speed requirements:
+  - Test 8
+  - Test 11
+  - Test 12
+
+
+--- Test: 17 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.85
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 88.55%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.7400s (from   5.03s to   5.77s)
+  Event  2: Duration = 1.5100s (from  10.30s to  11.81s)
+  Event  3: Duration = 0.5700s (from  15.57s to  16.14s)
+  Event  4: Duration = 0.6100s (from  20.87s to  21.48s)
+  Event  5: Duration = 0.2300s (from  25.93s to  26.16s)
+  Event  6: Duration = 0.3000s (from  31.23s to  31.53s)
+  Event  7: Duration = 0.1600s (from  36.43s to  36.59s)
+  Event  8: Duration = 0.1600s (from  41.85s to  42.01s)
+  Event  9: Duration = 1.3100s (from  51.77s to  53.08s)
+  Event 10: Duration = 0.9000s (from  57.28s to  58.18s)
+  Event 11: Duration = 0.3300s (from  62.31s to  62.64s)
+  Event 12: Duration = 0.4500s (from  67.56s to  68.01s)
+  Event 13: Duration = 0.2100s (from  72.67s to  72.88s)
+  Event 14: Duration = 0.2700s (from  77.89s to  78.16s)
+  Event 15: Duration = 0.1500s (from  83.14s to  83.29s)
+  Event 16: Duration = 0.1700s (from  88.49s to  88.66s)
+
+--- Test: 2 ---
+Parameters:
+  AntiBacklashMode: Constant torque
+  Offset: 1.0
+  BaseTorque: 2.5
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 89.92%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.9000s (from   5.06s to   5.96s)
+  Event  2: Duration = 1.0700s (from  10.84s to  11.91s)
+  Event  3: Duration = 0.6000s (from  15.59s to  16.19s)
+  Event  4: Duration = 0.5600s (from  20.91s to  21.47s)
+  Event  5: Duration = 0.2000s (from  25.93s to  26.13s)
+  Event  6: Duration = 0.2300s (from  31.20s to  31.43s)
+  Event  7: Duration = 0.1500s (from  36.36s to  36.51s)
+  Event  8: Duration = 0.1600s (from  41.79s to  41.95s)
+  Event  9: Duration = 0.6700s (from  51.77s to  52.44s)
+  Event 10: Duration = 0.9300s (from  57.31s to  58.24s)
+  Event 11: Duration = 0.4100s (from  62.17s to  62.58s)
+  Event 12: Duration = 0.6000s (from  67.37s to  67.97s)
+  Event 13: Duration = 0.1900s (from  72.53s to  72.72s)
+  Event 14: Duration = 0.2500s (from  77.80s to  78.05s)
+  Event 15: Duration = 0.2300s (from  82.95s to  83.18s)
+  Event 16: Duration = 0.2000s (from  88.31s to  88.51s)
+
+--- Test: 6 ---
+Parameters:
+  AntiBacklashMode: Speed cmd offset
+  Offset: 5.0
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 91.70%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.9700s (from   4.99s to   5.96s)
+  Event  2: Duration = 1.5700s (from  10.25s to  11.82s)
+  Event  3: Duration = 0.6400s (from  15.52s to  16.16s)
+  Event  4: Duration = 0.5800s (from  20.80s to  21.38s)
+  Event  5: Duration = 0.2000s (from  25.87s to  26.07s)
+  Event  6: Duration = 0.2800s (from  31.14s to  31.42s)
+  Event  7: Duration = 0.1600s (from  36.33s to  36.49s)
+  Event  8: Duration = 0.1900s (from  41.70s to  41.89s)
+  Event  9: Duration = 1.2800s (from  51.65s to  52.93s)
+  Event 10: Duration = 1.4000s (from  56.85s to  58.25s)
+  Event 11: Duration = 0.3900s (from  62.13s to  62.52s)
+  Event 12: Duration = 0.6690s (from  67.40s to  68.07s)
+  Event 13: Duration = 0.1000s (from  72.50s to  72.60s)
+  Event 14: Duration = 0.2200s (from  77.78s to  78.00s)
+  Event 15: Duration = 0.0200s (from  83.03s to  83.05s)
+  Event 16: Duration = 0.1300s (from  88.37s to  88.50s)
+
+--- Test: 16 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.75
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 94.84%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.7100s (from   5.05s to   5.76s)
+  Event  2: Duration = 0.9900s (from  10.73s to  11.72s)
+  Event  3: Duration = 0.6210s (from  15.53s to  16.15s)
+  Event  4: Duration = 0.6400s (from  20.84s to  21.48s)
+  Event  5: Duration = 0.1800s (from  25.91s to  26.09s)
+  Event  6: Duration = 0.2200s (from  31.19s to  31.41s)
+  Event  7: Duration = 0.1500s (from  36.39s to  36.54s)
+  Event  8: Duration = 0.1700s (from  41.80s to  41.97s)
+  Event  9: Duration = 1.2200s (from  51.69s to  52.91s)
+  Event 10: Duration = 0.8200s (from  57.19s to  58.01s)
+  Event 11: Duration = 0.3300s (from  62.24s to  62.57s)
+  Event 12: Duration = 0.4010s (from  67.48s to  67.88s)
+  Event 13: Duration = 0.2000s (from  72.61s to  72.81s)
+  Event 14: Duration = 0.2300s (from  77.84s to  78.07s)
+  Event 15: Duration = 0.1300s (from  83.07s to  83.20s)
+  Event 16: Duration = 0.1600s (from  88.41s to  88.57s)
+
+--- Test: 14 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 1.75
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 95.55%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.7500s (from   4.99s to   5.74s)
+  Event  2: Duration = 1.5800s (from  10.24s to  11.82s)
+  Event  3: Duration = 0.4900s (from  15.43s to  15.92s)
+  Event  4: Duration = 0.4800s (from  20.81s to  21.29s)
+  Event  5: Duration = 0.1900s (from  25.87s to  26.06s)
+  Event  6: Duration = 0.2600s (from  31.16s to  31.42s)
+  Event  7: Duration = 0.1700s (from  36.37s to  36.54s)
+  Event  8: Duration = 0.1500s (from  41.78s to  41.93s)
+  Event  9: Duration = 1.4500s (from  51.67s to  53.12s)
+  Event 10: Duration = 0.7400s (from  57.09s to  57.83s)
+  Event 11: Duration = 0.3300s (from  62.19s to  62.52s)
+  Event 12: Duration = 0.5400s (from  67.26s to  67.80s)
+  Event 13: Duration = 0.2500s (from  72.55s to  72.80s)
+  Event 14: Duration = 0.2400s (from  77.84s to  78.08s)
+  Event 15: Duration = 0.1690s (from  83.03s to  83.20s)
+  Event 16: Duration = 0.1700s (from  88.45s to  88.62s)
+
+--- Test: 18 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.9
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 98.48%
+Result: Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.7000s (from   5.06s to   5.76s)
+  Event  2: Duration = 1.5000s (from  10.32s to  11.82s)
+  Event  3: Duration = 0.4200s (from  15.51s to  15.93s)
+  Event  4: Duration = 0.6200s (from  20.88s to  21.50s)
+  Event  5: Duration = 0.1900s (from  25.94s to  26.13s)
+  Event  6: Duration = 0.2200s (from  31.24s to  31.46s)
+  Event  7: Duration = 0.1600s (from  36.42s to  36.58s)
+  Event  8: Duration = 0.1500s (from  41.83s to  41.98s)
+  Event  9: Duration = 1.2800s (from  51.78s to  53.06s)
+  Event 10: Duration = 0.9400s (from  57.22s to  58.16s)
+  Event 11: Duration = 0.4100s (from  62.22s to  62.63s)
+  Event 12: Duration = 0.5000s (from  67.44s to  67.94s)
+  Event 13: Duration = 0.2200s (from  72.65s to  72.87s)
+  Event 14: Duration = 0.2500s (from  77.89s to  78.14s)
+  Event 15: Duration = 0.1300s (from  83.14s to  83.27s)
+  Event 16: Duration = 0.1700s (from  88.49s to  88.66s)
+
+--- Test: 4 ---
+Parameters:
+  AntiBacklashMode: Constant torque
+  Offset: 1.0
+  BaseTorque: 3.2
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 100.51%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.8900s (from   5.05s to   5.94s)
+  Event  2: Duration = 1.0800s (from  10.82s to  11.90s)
+  Event  3: Duration = 0.5900s (from  15.62s to  16.21s)
+  Event  4: Duration = 0.5900s (from  20.89s to  21.48s)
+  Event  5: Duration = 0.2100s (from  25.95s to  26.16s)
+  Event  6: Duration = 0.2500s (from  31.23s to  31.48s)
+  Event  7: Duration = 0.1600s (from  36.39s to  36.55s)
+  Event  8: Duration = 0.1800s (from  41.81s to  41.99s)
+  Event  9: Duration = 1.1500s (from  51.83s to  52.98s)
+  Event 10: Duration = 1.0800s (from  57.42s to  58.50s)
+  Event 11: Duration = 0.3400s (from  62.25s to  62.59s)
+  Event 12: Duration = 0.5500s (from  67.52s to  68.07s)
+  Event 13: Duration = 0.2100s (from  72.59s to  72.80s)
+  Event 14: Duration = 0.3000s (from  77.85s to  78.15s)
+  Event 15: Duration = 0.1600s (from  83.05s to  83.21s)
+  Event 16: Duration = 0.1800s (from  88.45s to  88.63s)
+
+--- Test: 13 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 2.5
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 103.26%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.7000s (from   5.08s to   5.78s)
+  Event  2: Duration = 1.0900s (from  10.73s to  11.82s)
+  Event  3: Duration = 0.6700s (from  15.56s to  16.23s)
+  Event  4: Duration = 0.6200s (from  20.85s to  21.47s)
+  Event  5: Duration = 0.2200s (from  25.93s to  26.15s)
+  Event  6: Duration = 0.3600s (from  31.21s to  31.57s)
+  Event  7: Duration = 0.1600s (from  36.43s to  36.59s)
+  Event  8: Duration = 0.1700s (from  41.79s to  41.96s)
+  Event  9: Duration = 1.5000s (from  51.73s to  53.23s)
+  Event 10: Duration = 0.9200s (from  57.09s to  58.01s)
+  Event 11: Duration = 0.3700s (from  62.22s to  62.59s)
+  Event 12: Duration = 0.4800s (from  67.37s to  67.85s)
+  Event 13: Duration = 0.2300s (from  72.63s to  72.86s)
+  Event 14: Duration = 0.2500s (from  77.88s to  78.13s)
+  Event 15: Duration = 0.2000s (from  83.09s to  83.29s)
+  Event 16: Duration = 0.1700s (from  88.50s to  88.67s)
+
+--- Test: 3 ---
+Parameters:
+  AntiBacklashMode: Constant torque
+  Offset: 1.0
+  BaseTorque: 3.5
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 103.47%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.9400s (from   5.01s to   5.95s)
+  Event  2: Duration = 1.1300s (from  10.73s to  11.86s)
+  Event  3: Duration = 0.4410s (from  15.61s to  16.05s)
+  Event  4: Duration = 0.4300s (from  20.89s to  21.32s)
+  Event  5: Duration = 0.2200s (from  25.92s to  26.14s)
+  Event  6: Duration = 0.2600s (from  31.21s to  31.47s)
+  Event  7: Duration = 0.1400s (from  36.40s to  36.54s)
+  Event  8: Duration = 0.1600s (from  41.79s to  41.95s)
+  Event  9: Duration = 1.0600s (from  51.83s to  52.89s)
+  Event 10: Duration = 1.0200s (from  57.45s to  58.47s)
+  Event 11: Duration = 0.3800s (from  62.25s to  62.63s)
+  Event 12: Duration = 0.5900s (from  67.51s to  68.10s)
+  Event 13: Duration = 0.2500s (from  72.55s to  72.80s)
+  Event 14: Duration = 0.2300s (from  77.85s to  78.08s)
+  Event 15: Duration = 0.1500s (from  83.05s to  83.20s)
+  Event 16: Duration = 0.1700s (from  88.43s to  88.60s)
+
+--- Test: 10 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 1.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 106.75%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 1.0200s (from   5.06s to   6.08s)
+  Event  2: Duration = 0.9500s (from  10.86s to  11.81s)
+  Event  3: Duration = 0.3800s (from  15.66s to  16.04s)
+  Event  4: Duration = 0.4300s (from  20.98s to  21.41s)
+  Event  5: Duration = 0.2100s (from  25.97s to  26.18s)
+  Event  6: Duration = 0.2700s (from  31.24s to  31.51s)
+  Event  7: Duration = 0.1600s (from  36.42s to  36.58s)
+  Event  8: Duration = 0.1500s (from  41.82s to  41.97s)
+  Event  9: Duration = 1.4000s (from  51.71s to  53.11s)
+  Event 10: Duration = 0.9100s (from  57.17s to  58.08s)
+  Event 11: Duration = 0.3300s (from  62.26s to  62.59s)
+  Event 12: Duration = 0.3700s (from  67.49s to  67.86s)
+  Event 13: Duration = 0.2100s (from  72.62s to  72.83s)
+  Event 14: Duration = 0.2510s (from  77.85s to  78.10s)
+  Event 15: Duration = 0.1800s (from  83.04s to  83.22s)
+  Event 16: Duration = 0.1600s (from  88.46s to  88.62s)
+
+--- Test: 7 ---
+Parameters:
+  AntiBacklashMode: Speed cmd offset
+  Offset: 10.0
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 109.26%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.5300s (from   5.08s to   5.61s)
+  Event  2: Duration = 1.0800s (from  10.84s to  11.92s)
+  Event  3: Duration = 0.5900s (from  15.68s to  16.27s)
+  Event  4: Duration = 0.5600s (from  20.94s to  21.50s)
+  Event  5: Duration = 0.2400s (from  25.98s to  26.22s)
+  Event  6: Duration = 0.2600s (from  31.25s to  31.51s)
+  Event  7: Duration = 0.2400s (from  36.35s to  36.59s)
+  Event  8: Duration = 0.1700s (from  41.84s to  42.01s)
+  Event  9: Duration = 1.0700s (from  51.86s to  52.93s)
+  Event 10: Duration = 1.2300s (from  57.02s to  58.25s)
+  Event 11: Duration = 0.3600s (from  62.15s to  62.51s)
+  Event 12: Duration = 0.6300s (from  67.55s to  68.18s)
+  Event 13: Duration = 0.1600s (from  72.57s to  72.73s)
+  Event 14: Duration = 0.2800s (from  77.88s to  78.16s)
+  Event 15: Duration = 0.1400s (from  88.48s to  88.62s)
+  Event 16: Duration = 0.1400s (from  88.48s to  88.62s)
+
+--- Test: 19 ---
+Parameters:
+  AntiBacklashMode: Adaptive torque
+  Offset: 1.0
+  BaseTorque: 3.0
+  GainTorque: 5.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 109.78%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.9400s (from   5.02s to   5.96s)
+  Event  2: Duration = 1.0800s (from  10.80s to  11.88s)
+  Event  3: Duration = 0.4300s (from  15.59s to  16.02s)
+  Event  4: Duration = 0.4900s (from  20.91s to  21.40s)
+  Event  5: Duration = 0.2300s (from  25.97s to  26.20s)
+  Event  6: Duration = 0.2800s (from  31.25s to  31.53s)
+  Event  7: Duration = 0.1600s (from  36.45s to  36.61s)
+  Event  8: Duration = 0.0600s (from  41.86s to  41.92s)
+  Event  9: Duration = 0.9700s (from  51.88s to  52.85s)
+  Event 10: Duration = 1.0490s (from  57.49s to  58.54s)
+  Event 11: Duration = 0.6200s (from  62.36s to  62.98s)
+  Event 12: Duration = 0.5300s (from  67.65s to  68.18s)
+  Event 13: Duration = 0.2100s (from  72.74s to  72.95s)
+  Event 14: Duration = 0.2500s (from  78.03s to  78.28s)
+  Event 15: Duration = 0.1600s (from  83.24s to  83.40s)
+  Event 16: Duration = 0.2400s (from  88.57s to  88.81s)
+
+--- Test: 15 ---
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 1.5
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 111.38%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.6400s (from   5.05s to   5.69s)
+  Event  2: Duration = 1.0600s (from  10.70s to  11.76s)
+  Event  3: Duration = 0.6100s (from  15.49s to  16.10s)
+  Event  4: Duration = 0.6500s (from  20.81s to  21.46s)
+  Event  5: Duration = 0.2200s (from  25.87s to  26.09s)
+  Event  6: Duration = 0.2700s (from  31.17s to  31.44s)
+  Event  7: Duration = 0.1500s (from  36.39s to  36.54s)
+  Event  8: Duration = 0.1800s (from  41.78s to  41.96s)
+  Event  9: Duration = 1.4000s (from  51.73s to  53.13s)
+  Event 10: Duration = 1.1600s (from  56.88s to  58.04s)
+  Event 11: Duration = 0.4100s (from  62.16s to  62.57s)
+  Event 12: Duration = 0.5700s (from  67.39s to  67.96s)
+  Event 13: Duration = 0.2000s (from  72.63s to  72.83s)
+  Event 14: Duration = 0.1900s (from  77.90s to  78.09s)
+  Event 15: Duration = 0.1300s (from  83.11s to  83.24s)
+  Event 16: Duration = 0.1500s (from  88.48s to  88.63s)
+
+--- Test: 1 ---
+Parameters:
+  AntiBacklashMode: Constant torque
+  Offset: 1.0
+  BaseTorque: 3.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 114.12%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.3900s (from   5.16s to   5.55s)
+  Event  2: Duration = 1.0900s (from  10.88s to  11.97s)
+  Event  3: Duration = 0.5900s (from  15.60s to  16.19s)
+  Event  4: Duration = 0.5600s (from  20.94s to  21.50s)
+  Event  5: Duration = 0.2300s (from  25.98s to  26.21s)
+  Event  6: Duration = 0.2500s (from  31.26s to  31.51s)
+  Event  7: Duration = 0.1300s (from  36.47s to  36.60s)
+  Event  8: Duration = 0.1600s (from  41.84s to  42.00s)
+  Event  9: Duration = 1.1400s (from  51.74s to  52.88s)
+  Event 10: Duration = 0.8600s (from  57.53s to  58.39s)
+  Event 11: Duration = 0.6200s (from  62.30s to  62.92s)
+  Event 12: Duration = 0.4900s (from  67.53s to  68.02s)
+  Event 13: Duration = 0.2200s (from  72.60s to  72.82s)
+  Event 14: Duration = 0.2400s (from  77.86s to  78.10s)
+  Event 15: Duration = 0.1600s (from  83.07s to  83.23s)
+  Event 16: Duration = 0.1500s (from  88.47s to  88.62s)
+
+--- Test: 9 ---
+Parameters:
+  AntiBacklashMode: Speed cmd offset
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 119.33%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.5600s (from   5.04s to   5.60s)
+  Event  2: Duration = 0.9500s (from  10.76s to  11.71s)
+  Event  3: Duration = 0.5900s (from  15.60s to  16.19s)
+  Event  4: Duration = 0.5300s (from  20.89s to  21.42s)
+  Event  5: Duration = 0.2100s (from  25.94s to  26.15s)
+  Event  6: Duration = 0.2500s (from  31.22s to  31.47s)
+  Event  7: Duration = 0.1500s (from  36.42s to  36.57s)
+  Event  8: Duration = 0.1700s (from  41.80s to  41.97s)
+  Event  9: Duration = 1.1000s (from  51.78s to  52.88s)
+  Event 10: Duration = 0.9600s (from  57.53s to  58.49s)
+  Event 11: Duration = 0.6100s (from  62.26s to  62.87s)
+  Event 12: Duration = 0.6600s (from  67.43s to  68.09s)
+  Event 13: Duration = 0.2090s (from  72.59s to  72.80s)
+  Event 14: Duration = 0.2500s (from  77.89s to  78.14s)
+  Event 15: Duration = 0.1200s (from  83.08s to  83.20s)
+  Event 16: Duration = 0.1600s (from  88.46s to  88.62s)
+
+--- Test: 5 ---
+Parameters:
+  AntiBacklashMode: Speed cmd offset
+  Offset: 1.0
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 121.69%
+Result: Not Acceptable
+
+Backlash Events:
+  Event  1: Duration = 0.8000s (from   5.07s to   5.87s)
+  Event  2: Duration = 1.0600s (from  10.82s to  11.88s)
+  Event  3: Duration = 0.4000s (from  15.65s to  16.05s)
+  Event  4: Duration = 0.5300s (from  20.91s to  21.44s)
+  Event  5: Duration = 0.2200s (from  25.95s to  26.17s)
+  Event  6: Duration = 0.2400s (from  31.26s to  31.50s)
+  Event  7: Duration = 0.1400s (from  36.45s to  36.59s)
+  Event  8: Duration = 0.1600s (from  41.82s to  41.98s)
+  Event  9: Duration = 1.1000s (from  51.83s to  52.93s)
+  Event 10: Duration = 1.4600s (from  57.04s to  58.50s)
+  Event 11: Duration = 0.3600s (from  62.23s to  62.59s)
+  Event 12: Duration = 0.6600s (from  67.48s to  68.14s)
+  Event 13: Duration = 0.1900s (from  72.60s to  72.79s)
+  Event 14: Duration = 0.2200s (from  77.88s to  78.10s)
+  Event 15: Duration = 0.1200s (from  83.07s to  83.19s)
+  Event 16: Duration = 0.2100s (from  88.43s to  88.64s)
+
+--- Test: 8 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Parameters:
+  AntiBacklashMode: Speed cmd offset
+  Offset: 25.0
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+
+Backlash Events:
+  Event  1: Duration = 0.5700s (from   5.00s to   5.57s)
+  Event  2: Duration = 0.9500s (from  10.68s to  11.63s)
+  Event  3: Duration = 0.3700s (from  15.59s to  15.96s)
+  Event  4: Duration = 0.5900s (from  20.88s to  21.47s)
+  Event  5: Duration = 0.2000s (from  25.92s to  26.12s)
+  Event  6: Duration = 0.2700s (from  31.20s to  31.47s)
+  Event  7: Duration = 0.1290s (from  36.38s to  36.51s)
+  Event  8: Duration = 0.1800s (from  41.78s to  41.96s)
+  Event  9: Duration = 0.9700s (from  51.74s to  52.71s)
+  Event 10: Duration = 0.9200s (from  57.02s to  57.94s)
+  Event 11: Duration = 0.0400s (from  62.56s to  62.60s)
+  Event 12: Duration = 0.5400s (from  67.44s to  67.98s)
+  Event 13: Duration = 0.0200s (from  72.64s to  72.66s)
+  Event 14: Duration = 0.1700s (from  77.89s to  78.06s)
+  Event 15: Duration = 0.0400s (from  83.13s to  83.17s)
+  Event 16: Duration = 0.1100s (from  88.47s to  88.58s)
+
+--- Test: 11 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 10.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+
+Backlash Events:
+  Event  1: Duration = 0.7400s (from   5.05s to   5.79s)
+  Event  2: Duration = 0.9600s (from  10.73s to  11.69s)
+  Event  3: Duration = 0.6900s (from  15.50s to  16.19s)
+  Event  4: Duration = 0.6500s (from  20.82s to  21.47s)
+  Event  5: Duration = 0.2100s (from  25.91s to  26.12s)
+  Event  6: Duration = 0.2100s (from  31.21s to  31.42s)
+  Event  7: Duration = 0.1700s (from  36.37s to  36.54s)
+  Event  8: Duration = 0.1600s (from  41.80s to  41.96s)
+  Event  9: Duration = 1.4500s (from  51.88s to  53.33s)
+  Event 10: Duration = 1.1100s (from  56.96s to  58.07s)
+  Event 11: Duration = 0.3600s (from  62.24s to  62.60s)
+  Event 12: Duration = 0.0100s (from  67.32s to  67.33s)
+  Event 13: Duration = 0.1610s (from  72.62s to  72.78s)
+  Event 14: Duration = 0.0100s (from  77.66s to  77.67s)
+  Event 15: Duration = 0.1700s (from  83.03s to  83.20s)
+  Event 16: Duration = 0.3500s (from  88.28s to  88.63s)
+
+--- Test: 12 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Parameters:
+  AntiBacklashMode: Slave drooping
+  Offset: 0.5
+  BaseTorque: 3.3
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 5.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 16
+
+Backlash Events:
+  Event  1: Duration = 0.6700s (from   4.99s to   5.66s)
+  Event  2: Duration = 1.5200s (from  10.22s to  11.74s)
+  Event  3: Duration = 0.3900s (from  15.47s to  15.86s)
+  Event  4: Duration = 0.6100s (from  20.80s to  21.41s)
+  Event  5: Duration = 0.2100s (from  25.87s to  26.08s)
+  Event  6: Duration = 0.2300s (from  31.16s to  31.39s)
+  Event  7: Duration = 0.1400s (from  36.36s to  36.50s)
+  Event  8: Duration = 0.1600s (from  41.77s to  41.93s)
+  Event  9: Duration = 1.7000s (from  51.48s to  53.18s)
+  Event 10: Duration = 0.9600s (from  57.00s to  57.96s)
+  Event 11: Duration = 0.3100s (from  62.19s to  62.50s)
+  Event 12: Duration = 0.4100s (from  67.30s to  67.71s)
+  Event 13: Duration = 0.2100s (from  72.53s to  72.74s)
+  Event 14: Duration = 0.2600s (from  77.78s to  78.04s)
+  Event 15: Duration = 0.1400s (from  83.03s to  83.17s)
+  Event 16: Duration = 0.1700s (from  88.40s to  88.57s)
+
