@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/newtestlog5.csv'
+file_path = 'Python/data/newtestlog4.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -25,6 +25,8 @@ test_indices = df['TestIndex'].unique()
 performance_scores = {}
 test_validity = {}
 all_test_results = []
+
+WITHIN_PERCENTAGE = 10
 
 ANTIBACKLASH_MODE_MAP = {
     0: "Adaptive torque",
@@ -129,6 +131,12 @@ for test_index in test_indices:
     
     # Calculate elapsed time in seconds for each test run
     df_test['Time (s)'] = (df_test['Timestamp'] - df_test['Timestamp'].iloc[0]).dt.total_seconds()
+    
+    # get results
+    df_test['SpeedError'] = df_test['ENC1Speed'] - df_test['SpeedRef']
+    mean_abs_error = df_test['SpeedError'].abs().mean()
+    within_pcs = (df_test['SpeedError'].abs() <= df_test['SpeedRef'].abs() * WITHIN_PERCENTAGE/100).mean() * 100
+
 
     # --- Test Validity Check ---
     # A test is invalid if ENC1Speed never reaches 90% of SpeedRef (positive and negative) while AntiBacklash is enabled.
@@ -200,10 +208,22 @@ for test_index in test_indices:
             continue
             
         t_end = end_events['Time (s)'].iloc[0]
+        end_idx = end_events.index[0]
         duration = t_end - t_start
+        
+        # compute how much ENC1Position changes during interval
+        pos_start = df_test.at[start_idx, 'ENC1Position']
+        pos_end = df_test.at[end_idx, 'ENC1Position']
+        movement = abs(pos_end - pos_start)
+        
+        # IAE and ISE
+        interval_df = df_test.loc[start_idx:end_idx].copy()
+        dt = interval_df['Time (s)'].diff().fillna(0)
+        iae = (interval_df['SpeedError'].abs() * dt).sum()
+        ise = ((interval_df['SpeedError']**2) * dt).sum()
 
         if duration > 0:
-            backlash_results.append({'start': t_start, 'end': t_end, 'duration': duration})
+            backlash_results.append({'start': t_start, 'end': t_end, 'duration': duration, 'movement': movement, "IAE": iae, "ISE": ise})
 
     # --- Log Results & Performance Score ---
     if backlash_results:
@@ -220,14 +240,23 @@ for test_index in test_indices:
 
         current_score = None
         # Calculate performance score if we have 16 events and the test is valid
+        # changed score from duration to movement
         if len(backlash_results) == 16 and is_valid:
-            sum1_8 = sum(res['duration'] for res in backlash_results[0:8])
-            sum9_16 = sum(res['duration'] for res in backlash_results[8:16])
+            sum1_8 = sum(res['movement'] for res in backlash_results[0:8])
+            sum9_16 = sum(res['movement'] for res in backlash_results[8:16])
 
             if sum1_8 > 0:
                 performance_score = (sum9_16 / sum1_8) * 100
                 performance_scores[test_index] = performance_score
                 current_score = performance_score
+
+        iae_list = [e['IAE'] for e in backlash_results]
+        ise_list = [e['ISE'] for e in backlash_results]
+
+        mean_iae = np.mean(iae_list)
+        max_iae = np.max(iae_list)
+        mean_ise = np.mean(ise_list)
+        max_ise = np.max(ise_list)
         
         all_test_results.append({
             'test_index': test_index,
@@ -235,7 +264,13 @@ for test_index in test_indices:
             'params': param_values_for_log,
             'backlash_results': backlash_results,
             'performance_score': current_score,
-            'df_test': df_test
+            'df_test': df_test,
+            'mean_abs_error': mean_abs_error,
+            'within_pcs': within_pcs,
+            "mean_iae": mean_iae,
+            'max_iae': max_iae,
+            'mean_ise': mean_ise,
+            "max_ise": max_ise
         })
 
 
@@ -282,7 +317,8 @@ print("\n" + summary_string)
 # Sort results: valid tests by score, then invalid tests at the bottom
 all_test_results.sort(key=lambda x: (not x['is_valid'], x['performance_score'] if x['performance_score'] is not None else float('inf')))
 
-with open(output_filename, 'w') as f:
+# changed to encoding=utf-8
+with open(output_filename, 'w', encoding='utf-8') as f:
     f.write(f"Backlash Analysis Results for {file_path}\n\n")
     f.write(summary_string + "\n\n")
 
@@ -310,9 +346,17 @@ with open(output_filename, 'w') as f:
         elif len(result['backlash_results']) == 31:
              result_string += "Performance Score: N/A (sum of first 8 events is zero)\n"
 
+        result_string += f"\nMean abs speed error: {result['mean_abs_error']:.2f}\n"
+        result_string += f"% time speed within \u00B1{WITHIN_PERCENTAGE}%: {result['within_pcs']:.1f}\n"
+        result_string += f"Mean IAE: {result['mean_iae']:.3f}\n"
+        result_string += f" Max IAE: {result['max_iae']:.3f}\n"
+        result_string += f"Mean ISE: {result['mean_ise']:.3f}\n"
+        result_string += f" Max ISE: {result['max_ise']:.3f}\n"
+        
+        # legger til ENC1Position-tallet her
         result_string += "\nBacklash Events:\n"
         for i, res in enumerate(result['backlash_results']):
-            result_string += f"  Event {i+1:2d}: Duration = {res['duration']:.4f}s (from {res['start']:6.2f}s to {res['end']:6.2f}s)\n"
+            result_string += f"  Event {i+1:2d}: Duration = {res['duration']:.4f}s, Δposition = {res['movement']:.3f}° (from {res['start']:6.2f}s to {res['end']:6.2f}s)\n"
         
         f.write(result_string + "\n")
 
