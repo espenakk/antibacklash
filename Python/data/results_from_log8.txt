@@ -1,0 +1,52 @@
+Backlash Analysis Results for Python/data/log8.csv
+
+
+No valid tests were found to calculate performance scores.
+
+
+--- Test: 1 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 1.0
+  BaseTorque: 3.0
+  GainTorque: 6.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 1
+
+Mean abs speed error: 4.39
+% time speed within ±10%: 29.9
+Mean IAE: 1.596
+ Max IAE: 1.596
+Mean ISE: 2.267
+ Max ISE: 2.267
+
+Backlash Events:
+  Event  1: Duration = 1.1300s, Δposition = 17.397° (from   5.00s to   6.13s)
+
+--- Test: 2 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 1.0
+  BaseTorque: 3.0
+  GainTorque: 6.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+
+Detected Backlash Events: 1
+
+Mean abs speed error: 4.51
+% time speed within ±10%: 31.7
+Mean IAE: 1.559
+ Max IAE: 1.559
+Mean ISE: 2.237
+ Max ISE: 2.237
+
+Backlash Events:
+  Event  1: Duration = 1.1000s, Δposition = 16.727° (from   5.00s to   6.10s)
+
