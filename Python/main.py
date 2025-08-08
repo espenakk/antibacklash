@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/newtestlog6.csv'
+file_path = 'Python/data/log11.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -225,6 +225,16 @@ for test_index in test_indices:
 
         if duration > 0:
             backlash_results.append({'start': t_start, 'end': t_end, 'duration': duration, 'movement': movement, "IAE": iae, "ISE": ise})
+
+        #checking if we have duplicate events
+        unique = []
+        seen = set()
+        for res in backlash_results:
+            key = (round(res['start'], 3), round(res['end'], 3))
+            if key not in seen:
+                seen.add(key)
+                unique.append(res)
+        backlash_results = unique
 
     # --- Log Results & Performance Score ---
     if backlash_results:
