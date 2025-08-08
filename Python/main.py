@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/newestlog.csv'
+file_path = 'Python/data/newtestlog5.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -98,7 +98,7 @@ def generate_plot(df_test, test_index, backlash_results, performance_score=None)
     param_names = [
         'Offset', 'BaseTorque', 'GainTorque',
         'LoadTorque', 'MaxTorque', 'SlaveDroop', 'MasterDroop',
-        'AntiBacklashMode'
+        'SlaveDelay', 'DegreeOffset', 'DegreeGain', 'AntiBacklashMode'
     ]
     # Get parameters for the specific test_index, assuming they are constant for the test
     param_values = [df_test[param].iloc[0] for param in param_names]
@@ -235,7 +235,8 @@ for test_index in test_indices:
         # Get parameters for logging
         param_names_for_log = [
             'AntiBacklashMode', 'Offset', 'BaseTorque', 'GainTorque',
-            'LoadTorque', 'MaxTorque', 'SlaveDroop', 'MasterDroop'
+            'LoadTorque', 'MaxTorque', 'SlaveDroop', 'MasterDroop',
+            'SlaveDelay', 'DegreeOffset', 'DegreeGain'
         ]
         param_values_for_log = {name: df_test[name].iloc[0] for name in param_names_for_log}
 

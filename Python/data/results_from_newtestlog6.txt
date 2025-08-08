@@ -1,0 +1,48 @@
+Backlash Analysis Results for Python/data/newtestlog6.csv
+
+
+No valid tests were found to calculate performance scores.
+
+The following tests were disqualified for not meeting speed requirements:
+  - Test 1
+
+
+--- Test: 1 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 1.0
+  BaseTorque: 3.8
+  GainTorque: 6.0
+  LoadTorque: 1.2
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 13
+
+Mean abs speed error: 2.12
+% time speed within ±10%: 35.3
+Mean IAE: 0.408
+ Max IAE: 1.480
+Mean ISE: 2.681
+ Max ISE: 14.611
+
+Backlash Events:
+  Event  1: Duration = 0.2500s, Δposition = 6.125° (from   4.91s to   5.16s)
+  Event  2: Duration = 0.3400s, Δposition = 0.044° (from  10.14s to  10.48s)
+  Event  3: Duration = 0.2100s, Δposition = 4.043° (from  15.38s to  15.59s)
+  Event  4: Duration = 0.2100s, Δposition = 2.131° (from  20.58s to  20.79s)
+  Event  5: Duration = 0.1100s, Δposition = 3.730° (from  25.77s to  25.88s)
+  Event  6: Duration = 0.0700s, Δposition = 3.477° (from  36.29s to  36.36s)
+  Event  7: Duration = 0.0700s, Δposition = 3.477° (from  36.29s to  36.36s)
+  Event  8: Duration = 0.1500s, Δposition = 3.580° (from  41.69s to  41.84s)
+  Event  9: Duration = 0.0100s, Δposition = 0.945° (from  74.84s to  74.85s)
+  Event 10: Duration = 0.0100s, Δposition = 0.945° (from  74.84s to  74.85s)
+  Event 11: Duration = 0.0100s, Δposition = 0.945° (from  74.84s to  74.85s)
+  Event 12: Duration = 0.0100s, Δposition = 0.945° (from  74.84s to  74.85s)
+  Event 13: Duration = 0.0100s, Δposition = 0.945° (from  74.84s to  74.85s)
+
