@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/newtestlog4.csv'
+file_path = 'Python/data/newestlog.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -35,7 +35,8 @@ ANTIBACKLASH_MODE_MAP = {
     3: "Slave drooping",
     4: "Actual position offset",
     5: "Slave speed ref delay",
-    6: "Constrained slave acceleration"
+    6: "Constrained slave acceleration",
+    7: "Simple torque"
 }
 
 def generate_plot(df_test, test_index, backlash_results, performance_score=None):
