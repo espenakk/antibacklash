@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/log11.csv'
+file_path = 'Python/data/log13.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -253,7 +253,7 @@ for test_index in test_indices:
         current_score = None
         # Calculate performance score if we have 16 events and the test is valid
         # changed score from duration to movement
-        if len(backlash_results) == 16 and is_valid:
+        if len(backlash_results) > 10:
             sum1_8 = sum(res['movement'] for res in backlash_results[0:8])
             sum9_16 = sum(res['movement'] for res in backlash_results[8:16])
 
@@ -327,7 +327,8 @@ print("\n" + summary_string)
 
 # --- Write Sorted Log File ---
 # Sort results: valid tests by score, then invalid tests at the bottom
-all_test_results.sort(key=lambda x: (not x['is_valid'], x['performance_score'] if x['performance_score'] is not None else float('inf')))
+# all_test_results.sort(key=lambda x: (not x['is_valid'], x['performance_score'] if x['performance_score'] is not None else float('inf')))
+all_test_results.sort(key=lambda x: (x['performance_score'] if x['performance_score'] is not None else float('inf')))
 
 # changed to encoding=utf-8
 with open(output_filename, 'w', encoding='utf-8') as f:
@@ -338,6 +339,9 @@ with open(output_filename, 'w', encoding='utf-8') as f:
         result_string = f"--- Test: {round(result['test_index'])} ---\n"
         if not result['is_valid']:
             result_string += "Status: INVALID (ENC1Speed did not reach SpeedRef)\n"
+
+        if len(result['backlash_results']) < 16:
+            result_string += "Status: INVALID (Did not find 16 backlash events)\n"
         
         result_string += "Parameters:\n"
         for name, val in result['params'].items():
@@ -364,8 +368,7 @@ with open(output_filename, 'w', encoding='utf-8') as f:
         result_string += f" Max IAE: {result['max_iae']:.3f}\n"
         result_string += f"Mean ISE: {result['mean_ise']:.3f}\n"
         result_string += f" Max ISE: {result['max_ise']:.3f}\n"
-        
-        # legger til ENC1Position-tallet her
+     
         result_string += "\nBacklash Events:\n"
         for i, res in enumerate(result['backlash_results']):
             result_string += f"  Event {i+1:2d}: Duration = {res['duration']:.4f}s, Δposition = {res['movement']:.3f}° (from {res['start']:6.2f}s to {res['end']:6.2f}s)\n"
