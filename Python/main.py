@@ -4,7 +4,11 @@ import numpy as np
 import os
 
 # Load the data
+<<<<<<< HEAD
 file_path = 'Python/data/log13.csv'
+=======
+file_path = 'Python/data/log15.csv'
+>>>>>>> fa325af (Added line for antibacklashenabled)
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -92,6 +96,22 @@ def generate_plot(df_test, test_index, backlash_results, performance_score=None)
             handles.append(plt.Line2D([0], [0], color='r', linestyle='--', label='Backlash End'))
     by_label = dict(zip([h.get_label() for h in handles], handles))
     ax1.legend(by_label.values(), by_label.keys(), loc='upper left')
+
+    # --- Add vertical line for AntiBacklashEnabled switch ---
+    switch_point = df_test[df_test['AntiBacklashEnabled'].diff() == 1]
+    
+    if not switch_point.empty:
+        switch_time = switch_point['Time (s)'].iloc[0]
+        
+        # Add a vertical line to each plot
+        ax1.axvline(x=switch_time, color='m', linestyle='-', linewidth=1, label='AntiBacklash ON')
+        ax2.axvline(x=switch_time, color='m', linestyle='-', linewidth=1)
+        ax3.axvline(x=switch_time, color='m', linestyle='-', linewidth=1)
+
+        # Update legend for the speed plot to include the new line
+        handles, labels = ax1.get_legend_handles_labels()
+        by_label = dict(zip(labels, handles))
+        ax1.legend(by_label.values(), by_label.keys(), loc='upper left')
 
     # --- Parameters Table ---
     ax4.axis('off') # Hide the axes for the table subplot

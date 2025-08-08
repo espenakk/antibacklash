@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the data
-file_path = 'data/log.csv' 
+file_path = 'Python/data/log14.csv' 
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -72,10 +72,10 @@ for test_index in test_indices:
         switch_time = switch_point['Time (s)'].iloc[0]
         
         # Add a vertical line to each plot
-        ax1.axvline(x=switch_time, color='r', linestyle='--', label='AntiBacklash On')
-        ax2.axvline(x=switch_time, color='r', linestyle='--')
-        ax3.axvline(x=switch_time, color='r', linestyle='--')
-        
+        ax1.axvline(x=switch_time, color='m', linestyle=':', label='AntiBacklash ON ->')
+        ax2.axvline(x=switch_time, color='m', linestyle=':')
+        ax3.axvline(x=switch_time, color='m', linestyle=':')
+
         # Update legend for the speed plot to include the new line
         handles, labels = ax1.get_legend_handles_labels()
         by_label = dict(zip(labels, handles))
