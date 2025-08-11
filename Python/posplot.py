@@ -41,27 +41,30 @@ ANTIBACKLASH_MODE_MAP = {
 
 def generate_plot(df_test, test_index, backlash_results, performance_score=None):
     # Create a new figure for each test index with 4 subplots
-    fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(12, 22), 
-                                           gridspec_kw={'height_ratios': [3, 3, 3, 1.5]})
+    # fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(12, 22),
+    #                                        gridspec_kw={'height_ratios': [3, 3, 3, 1.5]})
+    fig, (ax2) = plt.subplots(1, 1, figsize=(12, 22), 
+                                           gridspec_kw={'height_ratios': [3]})
     
-    title = f'Antibacklash Performance Analysis - Test: {round(test_index)}'
-    if performance_score is not None:
-        title += f' (Score: {performance_score:.2f}%)'
+    # title = f'Antibacklash Performance Analysis - Test: {round(test_index)}'
+    # if performance_score is not None:
+    #     title += f' (Score: {performance_score:.2f}%)'
+    title = f'CANOpen encoder position vs. FC3 encoder position'
     fig.suptitle(title, fontsize=16)
 
     # --- Speed Plot ---
-    ax1.plot(df_test['Time (s)'], df_test['SpeedRef'], label='SpeedRef')
-    ax1.plot(df_test['Time (s)'], df_test['ENC1Speed'], label='ENC1Speed')
-    ax1.plot(df_test['Time (s)'], df_test['FC1Speed'], label='FC1Speed')
-    ax1.plot(df_test['Time (s)'], df_test['FC2Speed'], label='FC2Speed')
-    ax1.set_ylabel('Speed')
-    ax1.grid(True)
-    ax1.set_title('Speed vs. Time')
+    # ax1.plot(df_test['Time (s)'], df_test['SpeedRef'], label='SpeedRef')
+    # ax1.plot(df_test['Time (s)'], df_test['ENC1Speed'], label='ENC1Speed')
+    # ax1.plot(df_test['Time (s)'], df_test['FC1Speed'], label='FC1Speed')
+    # ax1.plot(df_test['Time (s)'], df_test['FC2Speed'], label='FC2Speed')
+    # ax1.set_ylabel('Speed')
+    # ax1.grid(True)
+    # ax1.set_title('Speed vs. Time')
 
     # --- Position Plot ---
     ax2.plot(df_test['Time (s)'], df_test['ENC1Position'], label='ENC1Position')
-    ax2.plot(df_test['Time (s)'], df_test['FC1Position'], label='FC1Position')
-    ax2.plot(df_test['Time (s)'], df_test['FC2Position'], label='FC2Position')
+    # ax2.plot(df_test['Time (s)'], df_test['FC1Position'], label='FC1Position')
+    # ax2.plot(df_test['Time (s)'], df_test['FC2Position'], label='FC2Position')
     ax2.plot(df_test['Time (s)'], df_test['FC3Position'], label='FC3Position')
     ax2.set_ylabel('Position')
     ax2.grid(True)
@@ -69,68 +72,68 @@ def generate_plot(df_test, test_index, backlash_results, performance_score=None)
     ax2.set_title('Position vs. Time')
 
     # --- Torque Plot ---
-    ax3.plot(df_test['Time (s)'], abs(df_test['FC1Torque']), label='FC1Torque')
-    ax3.plot(df_test['Time (s)'], abs(df_test['FC2Torque']), label='FC2Torque')
-    ax3.plot(df_test['Time (s)'], df_test['FC3Torque'], label='FC3Torque')
-    ax3.set_xlabel('Time (s)')
-    ax3.set_ylabel('Torque')
-    ax3.grid(True)
-    ax3.legend(loc='upper left')
-    ax3.set_title('Torque vs. Time')
+    # ax3.plot(df_test['Time (s)'], abs(df_test['FC1Torque']), label='FC1Torque')
+    # ax3.plot(df_test['Time (s)'], abs(df_test['FC2Torque']), label='FC2Torque')
+    # ax3.plot(df_test['Time (s)'], df_test['FC3Torque'], label='FC3Torque')
+    # ax3.set_xlabel('Time (s)')
+    # ax3.set_ylabel('Torque')
+    # ax3.grid(True)
+    # ax3.legend(loc='upper left')
+    # ax3.set_title('Torque vs. Time')
 
     # Add backlash lines to plots
-    for res in backlash_results:
-        ax1.axvline(x=res['start'], color='g', linestyle='--')
-        ax1.axvline(x=res['end'], color='r', linestyle='--')
+    # for res in backlash_results:
+    #     ax1.axvline(x=res['start'], color='g', linestyle='--')
+    #     ax1.axvline(x=res['end'], color='r', linestyle='--')
 
-    # Update legend for speed plot
-    handles, labels = ax1.get_legend_handles_labels()
-    if backlash_results:
-        if 'Backlash Start' not in labels:
-            handles.append(plt.Line2D([0], [0], color='g', linestyle='--', label='Backlash Start'))
-        if 'Backlash End' not in labels:
-            handles.append(plt.Line2D([0], [0], color='r', linestyle='--', label='Backlash End'))
-    by_label = dict(zip([h.get_label() for h in handles], handles))
-    ax1.legend(by_label.values(), by_label.keys(), loc='upper left')
+    # # Update legend for speed plot
+    # handles, labels = ax1.get_legend_handles_labels()
+    # if backlash_results:
+    #     if 'Backlash Start' not in labels:
+    #         handles.append(plt.Line2D([0], [0], color='g', linestyle='--', label='Backlash Start'))
+    #     if 'Backlash End' not in labels:
+    #         handles.append(plt.Line2D([0], [0], color='r', linestyle='--', label='Backlash End'))
+    # by_label = dict(zip([h.get_label() for h in handles], handles))
+    # ax1.legend(by_label.values(), by_label.keys(), loc='upper left')
 
-    # --- Add vertical line for AntiBacklashEnabled switch ---
-    switch_point = df_test[df_test['AntiBacklashEnabled'].diff() == 1]
+    # # --- Add vertical line for AntiBacklashEnabled switch ---
+    # switch_point = df_test[df_test['AntiBacklashEnabled'].diff() == 1]
     
-    if not switch_point.empty:
-        switch_time = switch_point['Time (s)'].iloc[0]
+    # if not switch_point.empty:
+    #     switch_time = switch_point['Time (s)'].iloc[0]
         
-        # Add a vertical line to each plot
-        ax1.axvline(x=switch_time, color='m', linestyle='-', linewidth=1, label='AntiBacklash ON')
-        ax2.axvline(x=switch_time, color='m', linestyle='-', linewidth=1)
-        ax3.axvline(x=switch_time, color='m', linestyle='-', linewidth=1)
+    #     # Add a vertical line to each plot
+    #     ax1.axvline(x=switch_time, color='m', linestyle='-', linewidth=1, label='AntiBacklash ON')
+    #     ax2.axvline(x=switch_time, color='m', linestyle='-', linewidth=1)
+    #     ax3.axvline(x=switch_time, color='m', linestyle='-', linewidth=1)
 
-        # Update legend for the speed plot to include the new line
-        handles, labels = ax1.get_legend_handles_labels()
-        by_label = dict(zip(labels, handles))
-        ax1.legend(by_label.values(), by_label.keys(), loc='upper left')
+    #     # Update legend for the speed plot to include the new line
+    #     handles, labels = ax1.get_legend_handles_labels()
+    #     by_label = dict(zip(labels, handles))
+    #     ax1.legend(by_label.values(), by_label.keys(), loc='upper left')
 
-    # --- Parameters Table ---
-    ax4.axis('off') # Hide the axes for the table subplot
-    param_names = [
-        'Offset', 'BaseTorque', 'GainTorque',
-        'LoadTorque', 'MaxTorque', 'SlaveDroop', 'MasterDroop',
-        'SlaveDelay', 'DegreeOffset', 'DegreeGain', 'AntiBacklashMode'
-    ]
-    # Get parameters for the specific test_index, assuming they are constant for the test
-    param_values = [df_test[param].iloc[0] for param in param_names]
+    # # --- Parameters Table ---
+    # ax4.axis('off') # Hide the axes for the table subplot
+    # param_names = [
+    #     'Offset', 'BaseTorque', 'GainTorque',
+    #     'LoadTorque', 'MaxTorque', 'SlaveDroop', 'MasterDroop',
+    #     'SlaveDelay', 'DegreeOffset', 'DegreeGain', 'AntiBacklashMode'
+    # ]
+    # # Get parameters for the specific test_index, assuming they are constant for the test
+    # param_values = [df_test[param].iloc[0] for param in param_names]
 
-    table_data = []
-    for name, val in zip(param_names, param_values):
-        if name == 'AntiBacklashMode':
-            table_data.append([name, ANTIBACKLASH_MODE_MAP.get(val, f"Unknown ({val})")])
-        else:
-            table_data.append([name, val])
+    # table_data = []
+    # for name, val in zip(param_names, param_values):
+    #     if name == 'AntiBacklashMode':
+    #         table_data.append([name, ANTIBACKLASH_MODE_MAP.get(val, f"Unknown ({val})")])
+    #     else:
+    #         table_data.append([name, val])
             
-    table = ax4.table(cellText=table_data, colLabels=['Parameter', 'Value'],
-                      loc='center', cellLoc='center', colWidths=[0.3, 0.2])
-    table.auto_set_font_size(False)
-    table.set_fontsize(12)
-    table.scale(1, 1.8)
+    # table = ax4.table(cellText=table_data, colLabels=['Parameter', 'Value'],
+    #                   loc='center', cellLoc='center', colWidths=[0.3, 0.2])
+    # table.auto_set_font_size(False)
+    # table.set_fontsize(12)
+    # table.scale(1, 1.8)
 
     plt.tight_layout(rect=[0, 0, 1, 0.97])
 
