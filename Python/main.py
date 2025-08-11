@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/log17.csv'
+file_path = 'Python/data/log20.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -35,7 +35,7 @@ ANTIBACKLASH_MODE_MAP = {
     3: "Slave drooping",
     4: "Actual position offset",
     5: "Slave speed ref delay",
-    6: "Constrained slave acceleration",
+    6: "Slave speed ref delay offset",
     7: "Simple torque"
 }
 
