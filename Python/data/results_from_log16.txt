@@ -1,0 +1,1568 @@
+Backlash Analysis Results for Python/data/log16.csv
+
+--- Performance Summary ---
+Best performance was in Test 36 with a score of 30.55%.
+A score under 100% is acceptable. Lower is better.
+
+21 out of 36 scored tests were acceptable (58.3%).
+
+The following tests had unacceptable scores (>= 100%):
+  - Test 17: 100.74%
+  - Test 19: 102.47%
+  - Test 14: 103.85%
+  - Test 22: 104.08%
+  - Test 10: 106.42%
+  - Test 21: 107.84%
+  - Test 13: 109.16%
+  - Test 20: 112.29%
+  - Test 18: 116.45%
+  - Test 24: 121.58%
+  - Test 15: 122.83%
+  - Test 1: 126.52%
+  - Test 12: 127.86%
+  - Test 9: 132.50%
+  - Test 11: 183.01%
+
+The following tests were disqualified for not meeting speed requirements:
+  - Test 33
+  - Test 34
+  - Test 35
+  - Test 36
+
+
+--- Test: 36 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 1.0
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 13
+Performance Score: 30.55%
+Result: Acceptable
+
+Mean abs speed error: 1.95
+% time speed within ±10%: 39.8
+Mean IAE: 0.432
+ Max IAE: 1.431
+Mean ISE: 2.922
+ Max ISE: 10.747
+
+Backlash Events:
+  Event  1: Duration = 0.0400s, Δposition = 1.384° (from   5.15s to   5.19s)
+  Event  2: Duration = 0.1500s, Δposition = 4.950° (from  10.78s to  10.93s)
+  Event  3: Duration = 0.1300s, Δposition = 3.500° (from  15.55s to  15.68s)
+  Event  4: Duration = 0.0310s, Δposition = 1.230° (from  20.92s to  20.95s)
+  Event  5: Duration = 0.1700s, Δposition = 4.269° (from  25.98s to  26.15s)
+  Event  6: Duration = 0.2800s, Δposition = 0.040° (from  31.34s to  31.62s)
+  Event  7: Duration = 0.1000s, Δposition = 3.016° (from  36.43s to  36.53s)
+  Event  8: Duration = 0.0700s, Δposition = 2.480° (from  41.89s to  41.96s)
+  Event  9: Duration = 0.0300s, Δposition = 1.181° (from  51.74s to  51.77s)
+  Event 10: Duration = 0.1000s, Δposition = 2.901° (from  56.87s to  56.97s)
+  Event 11: Duration = 0.0100s, Δposition = 0.374° (from  62.29s to  62.30s)
+  Event 12: Duration = 0.0290s, Δposition = 0.740° (from  72.71s to  72.74s)
+  Event 13: Duration = 0.0400s, Δposition = 1.180° (from  83.29s to  83.33s)
+
+--- Test: 31 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.772727
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 14
+Performance Score: 31.01%
+Result: Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 49.7
+Mean IAE: 0.567
+ Max IAE: 1.696
+Mean ISE: 3.423
+ Max ISE: 16.923
+
+Backlash Events:
+  Event  1: Duration = 0.0690s, Δposition = 2.872° (from  10.54s to  10.60s)
+  Event  2: Duration = 0.1600s, Δposition = 3.895° (from  15.55s to  15.71s)
+  Event  3: Duration = 0.5500s, Δposition = 2.736° (from  20.81s to  21.36s)
+  Event  4: Duration = 0.1000s, Δposition = 2.812° (from  25.95s to  26.05s)
+  Event  5: Duration = 0.2900s, Δposition = 1.210° (from  31.22s to  31.51s)
+  Event  6: Duration = 0.1000s, Δposition = 2.769° (from  36.48s to  36.58s)
+  Event  7: Duration = 0.1700s, Δposition = 3.080° (from  41.87s to  42.04s)
+  Event  8: Duration = 0.2700s, Δposition = 7.740° (from  51.96s to  52.23s)
+  Event  9: Duration = 0.0100s, Δposition = 0.160° (from  56.93s to  56.94s)
+  Event 10: Duration = 0.0200s, Δposition = 1.258° (from  62.43s to  62.45s)
+  Event 11: Duration = 0.2000s, Δposition = 3.015° (from  67.51s to  67.71s)
+  Event 12: Duration = 0.0200s, Δposition = 1.357° (from  72.77s to  72.79s)
+  Event 13: Duration = 0.0200s, Δposition = 1.470° (from  77.90s to  77.92s)
+  Event 14: Duration = 0.0200s, Δposition = 1.148° (from  83.26s to  83.28s)
+
+--- Test: 27 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.590909
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 13
+Performance Score: 32.21%
+Result: Acceptable
+
+Mean abs speed error: 0.99
+% time speed within ±10%: 53.9
+Mean IAE: 0.616
+ Max IAE: 2.002
+Mean ISE: 3.529
+ Max ISE: 20.058
+
+Backlash Events:
+  Event  1: Duration = 0.0500s, Δposition = 1.736° (from   5.17s to   5.22s)
+  Event  2: Duration = 0.1200s, Δposition = 3.664° (from  10.53s to  10.64s)
+  Event  3: Duration = 0.1300s, Δposition = 3.593° (from  15.50s to  15.63s)
+  Event  4: Duration = 0.5100s, Δposition = 2.555° (from  20.84s to  21.35s)
+  Event  5: Duration = 0.0900s, Δposition = 4.164° (from  26.10s to  26.19s)
+  Event  6: Duration = 0.3200s, Δposition = 2.440° (from  31.21s to  31.54s)
+  Event  7: Duration = 0.0800s, Δposition = 4.351° (from  36.55s to  36.63s)
+  Event  8: Duration = 0.2000s, Δposition = 2.580° (from  41.84s to  42.04s)
+  Event  9: Duration = 0.4000s, Δposition = 0.966° (from  56.99s to  57.39s)
+  Event 10: Duration = 0.0400s, Δposition = 2.038° (from  62.33s to  62.37s)
+  Event 11: Duration = 0.1500s, Δposition = 2.143° (from  67.52s to  67.67s)
+  Event 12: Duration = 0.0100s, Δposition = 0.033° (from  72.62s to  72.63s)
+  Event 13: Duration = 0.0490s, Δposition = 2.900° (from  78.02s to  78.07s)
+
+--- Test: 35 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.954545
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 12
+Performance Score: 35.61%
+Result: Acceptable
+
+Mean abs speed error: 2.04
+% time speed within ±10%: 36.6
+Mean IAE: 0.520
+ Max IAE: 1.444
+Mean ISE: 3.735
+ Max ISE: 13.961
+
+Backlash Events:
+  Event  1: Duration = 0.1700s, Δposition = 4.768° (from   5.12s to   5.29s)
+  Event  2: Duration = 0.0300s, Δposition = 1.148° (from  10.72s to  10.76s)
+  Event  3: Duration = 0.0400s, Δposition = 1.154° (from  15.55s to  15.59s)
+  Event  4: Duration = 0.1990s, Δposition = 5.344° (from  20.92s to  21.12s)
+  Event  5: Duration = 0.2800s, Δposition = 1.532° (from  26.07s to  26.35s)
+  Event  6: Duration = 0.0300s, Δposition = 1.320° (from  31.25s to  31.28s)
+  Event  7: Duration = 0.1000s, Δposition = 3.406° (from  36.57s to  36.67s)
+  Event  8: Duration = 0.1300s, Δposition = 4.160° (from  41.86s to  41.99s)
+  Event  9: Duration = 0.0200s, Δposition = 0.747° (from  51.75s to  51.77s)
+  Event 10: Duration = 0.1000s, Δposition = 2.983° (from  62.66s to  62.76s)
+  Event 11: Duration = 0.0600s, Δposition = 2.170° (from  72.73s to  72.79s)
+  Event 12: Duration = 0.0700s, Δposition = 2.230° (from  83.51s to  83.58s)
+
+--- Test: 34 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.909091
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 13
+Performance Score: 37.90%
+Result: Acceptable
+
+Mean abs speed error: 1.88
+% time speed within ±10%: 42.6
+Mean IAE: 0.598
+ Max IAE: 1.476
+Mean ISE: 3.706
+ Max ISE: 13.983
+
+Backlash Events:
+  Event  1: Duration = 0.0300s, Δposition = 1.423° (from   4.98s to   5.01s)
+  Event  2: Duration = 0.1300s, Δposition = 4.257° (from  10.46s to  10.60s)
+  Event  3: Duration = 0.1300s, Δposition = 3.494° (from  15.61s to  15.74s)
+  Event  4: Duration = 0.5600s, Δposition = 4.230° (from  20.77s to  21.33s)
+  Event  5: Duration = 0.2500s, Δposition = 0.934° (from  25.94s to  26.19s)
+  Event  6: Duration = 0.1700s, Δposition = 5.010° (from  31.29s to  31.45s)
+  Event  7: Duration = 0.1300s, Δposition = 3.648° (from  36.47s to  36.60s)
+  Event  8: Duration = 0.0400s, Δposition = 2.250° (from  41.89s to  41.93s)
+  Event  9: Duration = 0.1500s, Δposition = 3.829° (from  51.75s to  51.90s)
+  Event 10: Duration = 0.0200s, Δposition = 0.297° (from  57.03s to  57.05s)
+  Event 11: Duration = 0.0100s, Δposition = 0.071° (from  62.16s to  62.17s)
+  Event 12: Duration = 0.0900s, Δposition = 2.500° (from  72.92s to  73.01s)
+  Event 13: Duration = 0.0900s, Δposition = 2.870° (from  83.26s to  83.35s)
+
+--- Test: 32 ---
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.818182
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 46.95%
+Result: Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 48.3
+Mean IAE: 0.514
+ Max IAE: 2.028
+Mean ISE: 3.210
+ Max ISE: 20.579
+
+Backlash Events:
+  Event  1: Duration = 0.1300s, Δposition = 4.098° (from   5.06s to   5.19s)
+  Event  2: Duration = 0.1400s, Δposition = 3.977° (from  10.25s to  10.39s)
+  Event  3: Duration = 0.1300s, Δposition = 3.647° (from  15.78s to  15.91s)
+  Event  4: Duration = 0.5600s, Δposition = 3.559° (from  20.77s to  21.33s)
+  Event  5: Duration = 0.0800s, Δposition = 2.175° (from  25.95s to  26.03s)
+  Event  6: Duration = 0.2900s, Δposition = 1.120° (from  31.22s to  31.51s)
+  Event  7: Duration = 0.1100s, Δposition = 5.312° (from  36.52s to  36.63s)
+  Event  8: Duration = 0.2000s, Δposition = 0.550° (from  41.83s to  42.03s)
+  Event  9: Duration = 0.0500s, Δposition = 2.703° (from  51.78s to  51.83s)
+  Event 10: Duration = 0.0400s, Δposition = 0.999° (from  57.26s to  57.30s)
+  Event 11: Duration = 0.0600s, Δposition = 2.845° (from  62.29s to  62.35s)
+  Event 12: Duration = 0.1600s, Δposition = 2.197° (from  67.49s to  67.65s)
+  Event 13: Duration = 0.0100s, Δposition = 0.077° (from  72.61s to  72.62s)
+  Event 14: Duration = 0.0300s, Δposition = 0.250° (from  77.94s to  77.97s)
+  Event 15: Duration = 0.0100s, Δposition = 0.703° (from  83.21s to  83.22s)
+  Event 16: Duration = 0.0210s, Δposition = 1.700° (from  88.50s to  88.52s)
+
+--- Test: 28 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.636364
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 14
+Performance Score: 50.69%
+Result: Acceptable
+
+Mean abs speed error: 1.02
+% time speed within ±10%: 51.7
+Mean IAE: 0.739
+ Max IAE: 2.217
+Mean ISE: 4.435
+ Max ISE: 22.354
+
+Backlash Events:
+  Event  1: Duration = 0.1200s, Δposition = 4.109° (from   5.00s to   5.12s)
+  Event  2: Duration = 0.6700s, Δposition = 6.905° (from  10.57s to  11.24s)
+  Event  3: Duration = 0.2390s, Δposition = 2.483° (from  15.75s to  15.99s)
+  Event  4: Duration = 0.6000s, Δposition = 4.488° (from  20.71s to  21.31s)
+  Event  5: Duration = 0.0600s, Δposition = 2.038° (from  25.94s to  26.00s)
+  Event  6: Duration = 0.2800s, Δposition = 0.620° (from  31.23s to  31.52s)
+  Event  7: Duration = 0.0900s, Δposition = 3.818° (from  36.51s to  36.60s)
+  Event  8: Duration = 0.2200s, Δposition = 1.940° (from  41.82s to  42.04s)
+  Event  9: Duration = 0.2000s, Δposition = 5.663° (from  56.96s to  57.16s)
+  Event 10: Duration = 0.0200s, Δposition = 0.994° (from  62.30s to  62.32s)
+  Event 11: Duration = 0.1700s, Δposition = 1.439° (from  67.45s to  67.62s)
+  Event 12: Duration = 0.0100s, Δposition = 0.797° (from  72.77s to  72.78s)
+  Event 13: Duration = 0.0400s, Δposition = 0.160° (from  77.94s to  77.98s)
+  Event 14: Duration = 0.1200s, Δposition = 4.329° (from  83.17s to  83.29s)
+
+--- Test: 30 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.727273
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 14
+Performance Score: 52.15%
+Result: Acceptable
+
+Mean abs speed error: 1.07
+% time speed within ±10%: 50.1
+Mean IAE: 0.585
+ Max IAE: 2.107
+Mean ISE: 3.532
+ Max ISE: 21.159
+
+Backlash Events:
+  Event  1: Duration = 0.0200s, Δposition = 1.016° (from   5.18s to   5.20s)
+  Event  2: Duration = 0.7590s, Δposition = 6.300° (from  10.54s to  11.29s)
+  Event  3: Duration = 0.0900s, Δposition = 2.576° (from  15.65s to  15.74s)
+  Event  4: Duration = 0.1900s, Δposition = 5.093° (from  20.84s to  21.03s)
+  Event  5: Duration = 0.0900s, Δposition = 3.054° (from  25.95s to  26.04s)
+  Event  6: Duration = 0.3100s, Δposition = 1.820° (from  31.22s to  31.53s)
+  Event  7: Duration = 0.0200s, Δposition = 1.170° (from  36.43s to  36.45s)
+  Event  8: Duration = 0.2100s, Δposition = 4.210° (from  41.83s to  42.04s)
+  Event  9: Duration = 0.1500s, Δposition = 4.307° (from  51.63s to  51.78s)
+  Event 10: Duration = 0.2500s, Δposition = 1.890° (from  57.11s to  57.36s)
+  Event 11: Duration = 0.0200s, Δposition = 1.247° (from  62.32s to  62.34s)
+  Event 12: Duration = 0.1800s, Δposition = 1.785° (from  67.50s to  67.68s)
+  Event 13: Duration = 0.0200s, Δposition = 0.160° (from  77.96s to  77.98s)
+  Event 14: Duration = 0.1000s, Δposition = 3.774° (from  83.16s to  83.26s)
+
+--- Test: 4 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 229.091
+  DegreeGain: 0.00154545
+
+Detected Backlash Events: 16
+Performance Score: 57.01%
+Result: Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 53.1
+Mean IAE: 1.252
+ Max IAE: 2.044
+Mean ISE: 6.179
+ Max ISE: 19.280
+
+Backlash Events:
+  Event  1: Duration = 1.1990s, Δposition = 16.095° (from   4.99s to   6.19s)
+  Event  2: Duration = 1.2300s, Δposition = 9.695° (from  10.72s to  11.96s)
+  Event  3: Duration = 0.6490s, Δposition = 8.921° (from  15.64s to  16.29s)
+  Event  4: Duration = 0.8400s, Δposition = 3.928° (from  20.72s to  21.56s)
+  Event  5: Duration = 0.2690s, Δposition = 5.142° (from  25.97s to  26.24s)
+  Event  6: Duration = 0.3100s, Δposition = 4.650° (from  31.27s to  31.57s)
+  Event  7: Duration = 0.1400s, Δposition = 4.439° (from  36.51s to  36.65s)
+  Event  8: Duration = 0.1790s, Δposition = 4.690° (from  41.89s to  42.07s)
+  Event  9: Duration = 0.1400s, Δposition = 4.423° (from  51.95s to  52.09s)
+  Event 10: Duration = 0.9190s, Δposition = 1.242° (from  57.13s to  58.05s)
+  Event 11: Duration = 0.1300s, Δposition = 4.334° (from  62.53s to  62.66s)
+  Event 12: Duration = 0.6990s, Δposition = 6.290° (from  67.65s to  68.35s)
+  Event 13: Duration = 0.1000s, Δposition = 4.021° (from  72.76s to  72.86s)
+  Event 14: Duration = 0.2700s, Δposition = 4.770° (from  78.05s to  78.32s)
+  Event 15: Duration = 0.0900s, Δposition = 4.065° (from  83.29s to  83.38s)
+  Event 16: Duration = 0.2000s, Δposition = 3.670° (from  88.69s to  88.89s)
+
+--- Test: 7 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 278.182
+  DegreeGain: 0.00209091
+
+Detected Backlash Events: 16
+Performance Score: 57.29%
+Result: Acceptable
+
+Mean abs speed error: 1.11
+% time speed within ±10%: 50.5
+Mean IAE: 1.177
+ Max IAE: 1.790
+Mean ISE: 5.678
+ Max ISE: 17.795
+
+Backlash Events:
+  Event  1: Duration = 1.2600s, Δposition = 19.331° (from   5.01s to   6.27s)
+  Event  2: Duration = 1.1990s, Δposition = 9.146° (from  10.78s to  11.97s)
+  Event  3: Duration = 0.4500s, Δposition = 3.428° (from  15.65s to  16.10s)
+  Event  4: Duration = 0.5390s, Δposition = 4.762° (from  20.93s to  21.47s)
+  Event  5: Duration = 0.2500s, Δposition = 4.345° (from  25.99s to  26.24s)
+  Event  6: Duration = 0.3100s, Δposition = 3.920° (from  31.27s to  31.58s)
+  Event  7: Duration = 0.1800s, Δposition = 4.570° (from  36.47s to  36.65s)
+  Event  8: Duration = 0.1800s, Δposition = 5.100° (from  41.88s to  42.06s)
+  Event  9: Duration = 0.0900s, Δposition = 3.076° (from  51.93s to  52.02s)
+  Event 10: Duration = 1.5700s, Δposition = 10.498° (from  57.05s to  58.62s)
+  Event 11: Duration = 0.1500s, Δposition = 4.768° (from  62.48s to  62.63s)
+  Event 12: Duration = 0.7000s, Δposition = 3.768° (from  67.62s to  68.32s)
+  Event 13: Duration = 0.0200s, Δposition = 0.956° (from  72.80s to  72.82s)
+  Event 14: Duration = 0.3300s, Δposition = 3.160° (from  78.02s to  78.35s)
+  Event 15: Duration = 0.0210s, Δposition = 1.313° (from  83.31s to  83.33s)
+  Event 16: Duration = 0.1700s, Δposition = 3.740° (from  88.66s to  88.83s)
+
+--- Test: 26 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.545455
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 14
+Performance Score: 59.12%
+Result: Acceptable
+
+Mean abs speed error: 0.97
+% time speed within ±10%: 52.2
+Mean IAE: 0.632
+ Max IAE: 2.012
+Mean ISE: 3.779
+ Max ISE: 20.240
+
+Backlash Events:
+  Event  1: Duration = 0.0700s, Δposition = 2.137° (from   5.15s to   5.22s)
+  Event  2: Duration = 0.6000s, Δposition = 3.636° (from  10.66s to  11.26s)
+  Event  3: Duration = 0.0600s, Δposition = 1.928° (from  15.49s to  15.55s)
+  Event  4: Duration = 0.2200s, Δposition = 5.098° (from  20.78s to  21.00s)
+  Event  5: Duration = 0.1500s, Δposition = 0.709° (from  26.04s to  26.19s)
+  Event  6: Duration = 0.3200s, Δposition = 0.320° (from  31.22s to  31.54s)
+  Event  7: Duration = 0.1100s, Δposition = 0.538° (from  36.52s to  36.63s)
+  Event  8: Duration = 0.2000s, Δposition = 2.210° (from  41.86s to  42.06s)
+  Event  9: Duration = 0.3800s, Δposition = 1.917° (from  57.00s to  57.38s)
+  Event 10: Duration = 0.0400s, Δposition = 1.868° (from  62.35s to  62.39s)
+  Event 11: Duration = 0.2300s, Δposition = 1.065° (from  67.53s to  67.76s)
+  Event 12: Duration = 0.0100s, Δposition = 0.720° (from  72.80s to  72.81s)
+  Event 13: Duration = 0.0400s, Δposition = 2.720° (from  78.05s to  78.09s)
+  Event 14: Duration = 0.0200s, Δposition = 1.510° (from  83.25s to  83.27s)
+
+--- Test: 29 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.681818
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 15
+Performance Score: 65.91%
+Result: Acceptable
+
+Mean abs speed error: 1.02
+% time speed within ±10%: 49.6
+Mean IAE: 0.619
+ Max IAE: 2.015
+Mean ISE: 3.470
+ Max ISE: 20.307
+
+Backlash Events:
+  Event  1: Duration = 0.1890s, Δposition = 3.153° (from   4.93s to   5.12s)
+  Event  2: Duration = 0.8100s, Δposition = 6.762° (from  10.45s to  11.26s)
+  Event  3: Duration = 0.0800s, Δposition = 2.351° (from  15.72s to  15.80s)
+  Event  4: Duration = 0.5090s, Δposition = 0.467° (from  20.83s to  21.34s)
+  Event  5: Duration = 0.1700s, Δposition = 0.720° (from  26.03s to  26.20s)
+  Event  6: Duration = 0.2890s, Δposition = 0.290° (from  31.23s to  31.51s)
+  Event  7: Duration = 0.0700s, Δposition = 4.416° (from  36.57s to  36.64s)
+  Event  8: Duration = 0.2000s, Δposition = 0.610° (from  41.83s to  42.03s)
+  Event  9: Duration = 0.0800s, Δposition = 2.944° (from  52.15s to  52.23s)
+  Event 10: Duration = 0.0300s, Δposition = 0.802° (from  57.31s to  57.34s)
+  Event 11: Duration = 0.0400s, Δposition = 1.543° (from  62.31s to  62.35s)
+  Event 12: Duration = 0.2200s, Δposition = 1.241° (from  67.51s to  67.73s)
+  Event 13: Duration = 0.0200s, Δposition = 1.582° (from  72.78s to  72.80s)
+  Event 14: Duration = 0.0100s, Δposition = 0.760° (from  78.06s to  78.07s)
+  Event 15: Duration = 0.0500s, Δposition = 3.499° (from  83.21s to  83.26s)
+
+--- Test: 33 ---
+Status: INVALID (ENC1Speed did not reach SpeedRef)
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.863636
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 14
+Performance Score: 66.82%
+Result: Acceptable
+
+Mean abs speed error: 1.12
+% time speed within ±10%: 46.2
+Mean IAE: 0.648
+ Max IAE: 2.089
+Mean ISE: 3.605
+ Max ISE: 20.795
+
+Backlash Events:
+  Event  1: Duration = 0.2400s, Δposition = 3.318° (from   4.86s to   5.10s)
+  Event  2: Duration = 0.5300s, Δposition = 3.664° (from  10.71s to  11.23s)
+  Event  3: Duration = 0.0400s, Δposition = 1.071° (from  15.48s to  15.52s)
+  Event  4: Duration = 0.5300s, Δposition = 3.950° (from  20.79s to  21.32s)
+  Event  5: Duration = 0.2700s, Δposition = 0.714° (from  25.94s to  26.21s)
+  Event  6: Duration = 0.2900s, Δposition = 2.130° (from  31.20s to  31.50s)
+  Event  7: Duration = 0.0400s, Δposition = 1.329° (from  36.42s to  36.46s)
+  Event  8: Duration = 0.2100s, Δposition = 4.710° (from  41.83s to  42.04s)
+  Event  9: Duration = 0.1200s, Δposition = 3.994° (from  51.75s to  51.87s)
+  Event 10: Duration = 0.1800s, Δposition = 4.658° (from  57.25s to  57.43s)
+  Event 11: Duration = 0.1400s, Δposition = 2.664° (from  67.49s to  67.63s)
+  Event 12: Duration = 0.0200s, Δposition = 1.335° (from  72.74s to  72.76s)
+  Event 13: Duration = 0.0400s, Δposition = 0.190° (from  77.93s to  77.97s)
+  Event 14: Duration = 0.0300s, Δposition = 1.115° (from  83.21s to  83.24s)
+
+--- Test: 6 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 261.818
+  DegreeGain: 0.00190909
+
+Detected Backlash Events: 16
+Performance Score: 66.89%
+Result: Acceptable
+
+Mean abs speed error: 1.10
+% time speed within ±10%: 52.3
+Mean IAE: 1.095
+ Max IAE: 1.961
+Mean ISE: 5.484
+ Max ISE: 19.239
+
+Backlash Events:
+  Event  1: Duration = 1.0790s, Δposition = 17.963° (from   5.01s to   6.09s)
+  Event  2: Duration = 1.2090s, Δposition = 11.470° (from  10.79s to  12.00s)
+  Event  3: Duration = 0.6200s, Δposition = 7.405° (from  15.62s to  16.24s)
+  Event  4: Duration = 0.5090s, Δposition = 4.313° (from  20.97s to  21.48s)
+  Event  5: Duration = 0.2400s, Δposition = 3.966° (from  25.97s to  26.21s)
+  Event  6: Duration = 0.2900s, Δposition = 4.360° (from  31.27s to  31.55s)
+  Event  7: Duration = 0.1700s, Δposition = 4.521° (from  36.46s to  36.63s)
+  Event  8: Duration = 0.1500s, Δposition = 4.260° (from  41.90s to  42.05s)
+  Event  9: Duration = 0.0490s, Δposition = 1.714° (from  51.84s to  51.89s)
+  Event 10: Duration = 0.5700s, Δposition = 9.432° (from  57.72s to  58.29s)
+  Event 11: Duration = 0.2500s, Δposition = 7.356° (from  62.50s to  62.75s)
+  Event 12: Duration = 0.7400s, Δposition = 8.668° (from  67.65s to  68.39s)
+  Event 13: Duration = 0.0200s, Δposition = 0.895° (from  72.81s to  72.83s)
+  Event 14: Duration = 0.2900s, Δposition = 3.770° (from  78.04s to  78.33s)
+  Event 15: Duration = 0.0290s, Δposition = 1.692° (from  83.26s to  83.29s)
+  Event 16: Duration = 0.2000s, Δposition = 5.440° (from  88.69s to  88.89s)
+
+--- Test: 8 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 294.545
+  DegreeGain: 0.00227273
+
+Detected Backlash Events: 16
+Performance Score: 70.77%
+Result: Acceptable
+
+Mean abs speed error: 1.14
+% time speed within ±10%: 49.3
+Mean IAE: 1.361
+ Max IAE: 2.744
+Mean ISE: 6.384
+ Max ISE: 25.492
+
+Backlash Events:
+  Event  1: Duration = 1.1900s, Δposition = 19.210° (from   5.02s to   6.21s)
+  Event  2: Duration = 1.1900s, Δposition = 10.849° (from  10.81s to  12.00s)
+  Event  3: Duration = 0.4100s, Δposition = 3.626° (from  15.61s to  16.02s)
+  Event  4: Duration = 0.6300s, Δposition = 6.790° (from  20.90s to  21.53s)
+  Event  5: Duration = 0.2100s, Δposition = 4.576° (from  25.98s to  26.19s)
+  Event  6: Duration = 0.3000s, Δposition = 4.140° (from  31.28s to  31.58s)
+  Event  7: Duration = 0.1690s, Δposition = 5.273° (from  36.45s to  36.62s)
+  Event  8: Duration = 0.1800s, Δposition = 4.000° (from  41.91s to  42.09s)
+  Event  9: Duration = 0.3300s, Δposition = 6.669° (from  51.86s to  52.19s)
+  Event 10: Duration = 2.3990s, Δposition = 13.354° (from  56.95s to  59.35s)
+  Event 11: Duration = 0.5990s, Δposition = 4.724° (from  62.11s to  62.71s)
+  Event 12: Duration = 0.7300s, Δposition = 5.680° (from  67.64s to  68.37s)
+  Event 13: Duration = 0.0500s, Δposition = 2.005° (from  72.81s to  72.86s)
+  Event 14: Duration = 0.2900s, Δposition = 3.480° (from  78.05s to  78.34s)
+  Event 15: Duration = 0.0300s, Δposition = 1.401° (from  83.31s to  83.34s)
+  Event 16: Duration = 0.2600s, Δposition = 4.060° (from  88.62s to  88.89s)
+
+--- Test: 23 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.704545
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 71.11%
+Result: Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 56.7
+Mean IAE: 1.426
+ Max IAE: 1.982
+Mean ISE: 6.989
+ Max ISE: 19.653
+
+Backlash Events:
+  Event  1: Duration = 0.9890s, Δposition = 17.990° (from   4.98s to   5.97s)
+  Event  2: Duration = 1.1990s, Δposition = 11.454° (from  10.82s to  12.02s)
+  Event  3: Duration = 0.6700s, Δposition = 6.779° (from  15.58s to  16.25s)
+  Event  4: Duration = 0.6590s, Δposition = 7.355° (from  20.92s to  21.58s)
+  Event  5: Duration = 0.2400s, Δposition = 4.455° (from  25.99s to  26.23s)
+  Event  6: Duration = 0.2700s, Δposition = 4.900° (from  31.29s to  31.56s)
+  Event  7: Duration = 0.2000s, Δposition = 5.147° (from  36.46s to  36.66s)
+  Event  8: Duration = 0.1700s, Δposition = 3.930° (from  41.92s to  42.09s)
+  Event  9: Duration = 1.3400s, Δposition = 11.811° (from  51.87s to  53.21s)
+  Event 10: Duration = 1.1200s, Δposition = 6.982° (from  57.67s to  58.79s)
+  Event 11: Duration = 0.5000s, Δposition = 3.806° (from  62.43s to  62.93s)
+  Event 12: Duration = 0.5500s, Δposition = 3.614° (from  67.74s to  68.29s)
+  Event 13: Duration = 0.2500s, Δposition = 4.982° (from  72.80s to  73.05s)
+  Event 14: Duration = 0.2900s, Δposition = 4.840° (from  78.09s to  78.38s)
+  Event 15: Duration = 0.1590s, Δposition = 4.488° (from  83.33s to  83.49s)
+  Event 16: Duration = 0.1600s, Δposition = 3.570° (from  88.73s to  88.89s)
+
+--- Test: 3 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 212.727
+  DegreeGain: 0.00136364
+
+Detected Backlash Events: 16
+Performance Score: 80.99%
+Result: Acceptable
+
+Mean abs speed error: 1.07
+% time speed within ±10%: 58.1
+Mean IAE: 1.261
+ Max IAE: 1.871
+Mean ISE: 6.260
+ Max ISE: 18.426
+
+Backlash Events:
+  Event  1: Duration = 1.1600s, Δposition = 15.667° (from   4.99s to   6.15s)
+  Event  2: Duration = 1.1000s, Δposition = 6.076° (from  10.80s to  11.90s)
+  Event  3: Duration = 0.5900s, Δposition = 6.955° (from  15.63s to  16.22s)
+  Event  4: Duration = 0.5000s, Δposition = 3.758° (from  20.94s to  21.44s)
+  Event  5: Duration = 0.2800s, Δposition = 3.928° (from  25.98s to  26.26s)
+  Event  6: Duration = 0.3400s, Δposition = 5.430° (from  31.23s to  31.57s)
+  Event  7: Duration = 0.1500s, Δposition = 3.428° (from  36.49s to  36.64s)
+  Event  8: Duration = 0.1900s, Δposition = 4.150° (from  41.87s to  42.06s)
+  Event  9: Duration = 0.6590s, Δposition = 12.255° (from  51.82s to  52.48s)
+  Event 10: Duration = 1.0700s, Δposition = 0.204° (from  57.13s to  58.20s)
+  Event 11: Duration = 0.1400s, Δposition = 4.564° (from  62.56s to  62.70s)
+  Event 12: Duration = 0.7290s, Δposition = 6.762° (from  67.66s to  68.39s)
+  Event 13: Duration = 0.0900s, Δposition = 4.010° (from  72.77s to  72.86s)
+  Event 14: Duration = 0.2990s, Δposition = 3.320° (from  78.04s to  78.34s)
+  Event 15: Duration = 0.1000s, Δposition = 4.098° (from  83.30s to  83.40s)
+  Event 16: Duration = 0.1800s, Δposition = 4.790° (from  88.72s to  88.91s)
+
+--- Test: 2 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 196.364
+  DegreeGain: 0.00118182
+
+Detected Backlash Events: 16
+Performance Score: 81.73%
+Result: Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 57.3
+Mean IAE: 1.376
+ Max IAE: 2.126
+Mean ISE: 6.999
+ Max ISE: 18.961
+
+Backlash Events:
+  Event  1: Duration = 1.1700s, Δposition = 14.799° (from   5.02s to   6.19s)
+  Event  2: Duration = 1.1900s, Δposition = 9.893° (from  10.80s to  11.99s)
+  Event  3: Duration = 0.4500s, Δposition = 5.026° (from  15.64s to  16.09s)
+  Event  4: Duration = 0.5800s, Δposition = 5.328° (from  20.94s to  21.52s)
+  Event  5: Duration = 0.2600s, Δposition = 4.488° (from  25.99s to  26.25s)
+  Event  6: Duration = 0.3000s, Δposition = 4.300° (from  31.28s to  31.58s)
+  Event  7: Duration = 0.1490s, Δposition = 3.510° (from  36.50s to  36.65s)
+  Event  8: Duration = 0.1800s, Δposition = 6.070° (from  41.91s to  42.09s)
+  Event  9: Duration = 0.9790s, Δposition = 11.464° (from  51.78s to  52.76s)
+  Event 10: Duration = 0.9900s, Δposition = 2.065° (from  57.23s to  58.22s)
+  Event 11: Duration = 0.1690s, Δposition = 5.340° (from  62.50s to  62.67s)
+  Event 12: Duration = 0.8900s, Δposition = 5.895° (from  67.52s to  68.41s)
+  Event 13: Duration = 0.1100s, Δposition = 3.587° (from  72.78s to  72.89s)
+  Event 14: Duration = 0.3700s, Δposition = 5.630° (from  78.07s to  78.44s)
+  Event 15: Duration = 0.1900s, Δposition = 3.944° (from  83.22s to  83.41s)
+  Event 16: Duration = 0.2000s, Δposition = 5.730° (from  88.70s to  88.91s)
+
+--- Test: 5 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 245.455
+  DegreeGain: 0.00172727
+
+Detected Backlash Events: 16
+Performance Score: 83.46%
+Result: Acceptable
+
+Mean abs speed error: 1.07
+% time speed within ±10%: 51.7
+Mean IAE: 1.113
+ Max IAE: 1.871
+Mean ISE: 5.703
+ Max ISE: 16.267
+
+Backlash Events:
+  Event  1: Duration = 1.0490s, Δposition = 9.163° (from   5.04s to   6.09s)
+  Event  2: Duration = 1.6290s, Δposition = 8.394° (from  10.31s to  11.94s)
+  Event  3: Duration = 0.4600s, Δposition = 4.702° (from  15.64s to  16.10s)
+  Event  4: Duration = 0.4900s, Δposition = 5.213° (from  21.00s to  21.49s)
+  Event  5: Duration = 0.2600s, Δposition = 4.054° (from  25.99s to  26.25s)
+  Event  6: Duration = 0.3100s, Δposition = 3.890° (from  31.29s to  31.59s)
+  Event  7: Duration = 0.1500s, Δposition = 4.103° (from  36.49s to  36.64s)
+  Event  8: Duration = 0.1700s, Δposition = 4.980° (from  41.88s to  42.05s)
+  Event  9: Duration = 0.1300s, Δposition = 4.395° (from  52.05s to  52.18s)
+  Event 10: Duration = 0.2100s, Δposition = 5.060° (from  58.05s to  58.26s)
+  Event 11: Duration = 0.2200s, Δposition = 6.542° (from  62.53s to  62.75s)
+  Event 12: Duration = 0.5790s, Δposition = 4.542° (from  67.64s to  68.22s)
+  Event 13: Duration = 0.1000s, Δposition = 3.598° (from  72.74s to  72.84s)
+  Event 14: Duration = 0.3000s, Δposition = 4.520° (from  78.04s to  78.34s)
+  Event 15: Duration = 0.0800s, Δposition = 3.972° (from  83.27s to  83.35s)
+  Event 16: Duration = 0.1700s, Δposition = 4.510° (from  88.67s to  88.84s)
+
+--- Test: 25 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Simple torque
+  Offset: 0.0
+  BaseTorque: 0.5
+  GainTorque: 0.0
+  LoadTorque: 2.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 13
+Performance Score: 85.39%
+Result: Acceptable
+
+Mean abs speed error: 0.98
+% time speed within ±10%: 52.3
+Mean IAE: 0.369
+ Max IAE: 1.608
+Mean ISE: 2.085
+ Max ISE: 16.182
+
+Backlash Events:
+  Event  1: Duration = 0.0300s, Δposition = 1.428° (from   5.04s to   5.07s)
+  Event  2: Duration = 0.0100s, Δposition = 0.318° (from  10.40s to  10.41s)
+  Event  3: Duration = 0.0900s, Δposition = 3.175° (from  15.65s to  15.74s)
+  Event  4: Duration = 0.4000s, Δposition = 0.176° (from  20.81s to  21.21s)
+  Event  5: Duration = 0.0200s, Δposition = 1.472° (from  26.07s to  26.09s)
+  Event  6: Duration = 0.1800s, Δposition = 2.080° (from  31.25s to  31.43s)
+  Event  7: Duration = 0.0100s, Δposition = 0.467° (from  36.54s to  36.55s)
+  Event  8: Duration = 0.1600s, Δposition = 0.250° (from  41.85s to  42.01s)
+  Event  9: Duration = 0.1500s, Δposition = 5.197° (from  51.83s to  51.98s)
+  Event 10: Duration = 0.0100s, Δposition = 0.027° (from  56.98s to  56.99s)
+  Event 11: Duration = 0.0300s, Δposition = 1.241° (from  62.32s to  62.35s)
+  Event 12: Duration = 0.2200s, Δposition = 0.857° (from  67.53s to  67.75s)
+  Event 13: Duration = 0.0110s, Δposition = 0.676° (from  72.82s to  72.83s)
+
+--- Test: 16 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.386364
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 92.62%
+Result: Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 56.1
+Mean IAE: 1.510
+ Max IAE: 1.938
+Mean ISE: 7.435
+ Max ISE: 18.863
+
+Backlash Events:
+  Event  1: Duration = 0.8100s, Δposition = 12.206° (from   4.96s to   5.77s)
+  Event  2: Duration = 1.2890s, Δposition = 9.756° (from  10.70s to  11.98s)
+  Event  3: Duration = 0.8090s, Δposition = 9.734° (from  15.49s to  16.30s)
+  Event  4: Duration = 0.6700s, Δposition = 7.613° (from  20.89s to  21.56s)
+  Event  5: Duration = 0.2890s, Δposition = 3.389° (from  25.96s to  26.25s)
+  Event  6: Duration = 0.3200s, Δposition = 3.890° (from  31.27s to  31.59s)
+  Event  7: Duration = 0.1900s, Δposition = 4.329° (from  36.47s to  36.66s)
+  Event  8: Duration = 0.1900s, Δposition = 3.720° (from  41.89s to  42.08s)
+  Event  9: Duration = 1.1900s, Δposition = 11.322° (from  51.97s to  53.16s)
+  Event 10: Duration = 1.2690s, Δposition = 10.283° (from  57.54s to  58.81s)
+  Event 11: Duration = 0.6400s, Δposition = 6.526° (from  62.48s to  63.12s)
+  Event 12: Duration = 0.5100s, Δposition = 4.713° (from  67.80s to  68.31s)
+  Event 13: Duration = 0.2600s, Δposition = 4.730° (from  72.82s to  73.08s)
+  Event 14: Duration = 0.2800s, Δposition = 4.740° (from  78.11s to  78.39s)
+  Event 15: Duration = 0.1600s, Δposition = 3.691° (from  83.34s to  83.50s)
+  Event 16: Duration = 0.1800s, Δposition = 4.600° (from  88.72s to  88.90s)
+
+--- Test: 17 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.431818
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 100.74%
+Result: Not Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 55.7
+Mean IAE: 1.386
+ Max IAE: 1.923
+Mean ISE: 6.847
+ Max ISE: 17.512
+
+Backlash Events:
+  Event  1: Duration = 0.7590s, Δposition = 14.799° (from   5.00s to   5.76s)
+  Event  2: Duration = 1.6490s, Δposition = 5.768° (from  10.30s to  11.95s)
+  Event  3: Duration = 0.5200s, Δposition = 3.538° (from  15.59s to  16.11s)
+  Event  4: Duration = 0.5300s, Δposition = 3.582° (from  20.93s to  21.46s)
+  Event  5: Duration = 0.2300s, Δposition = 5.054° (from  26.01s to  26.24s)
+  Event  6: Duration = 0.2890s, Δposition = 3.450° (from  31.30s to  31.59s)
+  Event  7: Duration = 0.1600s, Δposition = 4.543° (from  36.51s to  36.67s)
+  Event  8: Duration = 0.1700s, Δposition = 5.050° (from  41.91s to  42.08s)
+  Event  9: Duration = 1.1700s, Δposition = 12.454° (from  52.04s to  53.21s)
+  Event 10: Duration = 1.0590s, Δposition = 4.608° (from  57.64s to  58.70s)
+  Event 11: Duration = 0.4300s, Δposition = 5.207° (from  62.51s to  62.94s)
+  Event 12: Duration = 0.5700s, Δposition = 5.158° (from  67.78s to  68.35s)
+  Event 13: Duration = 0.2600s, Δposition = 3.724° (from  72.82s to  73.08s)
+  Event 14: Duration = 0.3100s, Δposition = 4.190° (from  78.10s to  78.41s)
+  Event 15: Duration = 0.1590s, Δposition = 4.422° (from  83.33s to  83.49s)
+  Event 16: Duration = 0.1800s, Δposition = 6.360° (from  88.73s to  88.91s)
+
+--- Test: 19 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.522727
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 102.47%
+Result: Not Acceptable
+
+Mean abs speed error: 1.10
+% time speed within ±10%: 55.3
+Mean IAE: 1.491
+ Max IAE: 2.505
+Mean ISE: 7.826
+ Max ISE: 25.113
+
+Backlash Events:
+  Event  1: Duration = 0.6300s, Δposition = 10.454° (from   4.97s to   5.60s)
+  Event  2: Duration = 1.2700s, Δposition = 12.601° (from  10.78s to  12.05s)
+  Event  3: Duration = 0.4600s, Δposition = 4.955° (from  15.62s to  16.08s)
+  Event  4: Duration = 0.5600s, Δposition = 5.823° (from  20.97s to  21.53s)
+  Event  5: Duration = 0.2600s, Δposition = 3.038° (from  25.99s to  26.25s)
+  Event  6: Duration = 0.3200s, Δposition = 5.190° (from  31.26s to  31.58s)
+  Event  7: Duration = 0.2500s, Δposition = 4.686° (from  36.40s to  36.65s)
+  Event  8: Duration = 0.2100s, Δposition = 4.560° (from  41.88s to  42.09s)
+  Event  9: Duration = 1.1890s, Δposition = 11.728° (from  51.96s to  53.15s)
+  Event 10: Duration = 1.1990s, Δposition = 10.273° (from  57.59s to  58.79s)
+  Event 11: Duration = 0.7290s, Δposition = 8.498° (from  62.42s to  63.15s)
+  Event 12: Duration = 0.5400s, Δposition = 4.625° (from  67.77s to  68.31s)
+  Event 13: Duration = 0.2690s, Δposition = 5.207° (from  72.80s to  73.07s)
+  Event 14: Duration = 0.2900s, Δposition = 3.830° (from  78.11s to  78.40s)
+  Event 15: Duration = 0.1600s, Δposition = 3.922° (from  83.31s to  83.47s)
+  Event 16: Duration = 0.1890s, Δposition = 4.490° (from  88.70s to  88.89s)
+
+--- Test: 14 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.295455
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 103.85%
+Result: Not Acceptable
+
+Mean abs speed error: 1.10
+% time speed within ±10%: 55.9
+Mean IAE: 1.442
+ Max IAE: 1.986
+Mean ISE: 7.006
+ Max ISE: 18.820
+
+Backlash Events:
+  Event  1: Duration = 1.0000s, Δposition = 15.442° (from   5.00s to   6.00s)
+  Event  2: Duration = 1.1400s, Δposition = 7.613° (from  10.79s to  11.93s)
+  Event  3: Duration = 0.4600s, Δposition = 3.988° (from  15.61s to  16.07s)
+  Event  4: Duration = 0.4900s, Δposition = 3.252° (from  20.96s to  21.45s)
+  Event  5: Duration = 0.2600s, Δposition = 3.878° (from  25.99s to  26.25s)
+  Event  6: Duration = 0.3100s, Δposition = 3.690° (from  31.28s to  31.59s)
+  Event  7: Duration = 0.1500s, Δposition = 4.054° (from  36.50s to  36.65s)
+  Event  8: Duration = 0.1600s, Δposition = 3.820° (from  41.90s to  42.06s)
+  Event  9: Duration = 1.1390s, Δposition = 13.497° (from  51.83s to  52.97s)
+  Event 10: Duration = 1.6690s, Δposition = 4.999° (from  57.07s to  58.74s)
+  Event 11: Duration = 0.4590s, Δposition = 4.438° (from  62.32s to  62.78s)
+  Event 12: Duration = 0.6700s, Δposition = 7.894° (from  67.74s to  68.41s)
+  Event 13: Duration = 0.2900s, Δposition = 3.307° (from  72.79s to  73.08s)
+  Event 14: Duration = 0.3400s, Δposition = 3.880° (from  78.09s to  78.43s)
+  Event 15: Duration = 0.1900s, Δposition = 5.053° (from  83.30s to  83.49s)
+  Event 16: Duration = 0.1600s, Δposition = 4.430° (from  88.73s to  88.89s)
+
+--- Test: 22 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.659091
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 104.08%
+Result: Not Acceptable
+
+Mean abs speed error: 1.10
+% time speed within ±10%: 57.0
+Mean IAE: 1.393
+ Max IAE: 1.788
+Mean ISE: 7.101
+ Max ISE: 17.778
+
+Backlash Events:
+  Event  1: Duration = 0.7390s, Δposition = 12.129° (from   4.97s to   5.71s)
+  Event  2: Duration = 1.1090s, Δposition = 8.833° (from  10.91s to  12.02s)
+  Event  3: Duration = 0.4600s, Δposition = 4.845° (from  15.61s to  16.07s)
+  Event  4: Duration = 0.5600s, Δposition = 6.378° (from  20.93s to  21.49s)
+  Event  5: Duration = 0.2800s, Δposition = 4.037° (from  25.97s to  26.25s)
+  Event  6: Duration = 0.3190s, Δposition = 3.510° (from  31.30s to  31.61s)
+  Event  7: Duration = 0.1800s, Δposition = 4.098° (from  36.47s to  36.65s)
+  Event  8: Duration = 0.1700s, Δposition = 4.920° (from  41.91s to  42.08s)
+  Event  9: Duration = 1.1500s, Δposition = 11.514° (from  52.05s to  53.20s)
+  Event 10: Duration = 1.2290s, Δposition = 10.668° (from  57.64s to  58.87s)
+  Event 11: Duration = 0.4400s, Δposition = 4.433° (from  62.47s to  62.91s)
+  Event 12: Duration = 0.5300s, Δposition = 3.648° (from  67.70s to  68.23s)
+  Event 13: Duration = 0.2700s, Δposition = 3.839° (from  72.79s to  73.06s)
+  Event 14: Duration = 0.3300s, Δposition = 5.720° (from  78.08s to  78.41s)
+  Event 15: Duration = 0.1800s, Δposition = 5.339° (from  83.28s to  83.46s)
+  Event 16: Duration = 0.1700s, Δposition = 5.580° (from  88.70s to  88.87s)
+
+--- Test: 10 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 327.273
+  DegreeGain: 0.00263636
+
+Detected Backlash Events: 15
+Performance Score: 106.42%
+Result: Not Acceptable
+
+Mean abs speed error: 1.20
+% time speed within ±10%: 45.0
+Mean IAE: 1.581
+ Max IAE: 7.332
+Mean ISE: 6.071
+ Max ISE: 16.426
+
+Backlash Events:
+  Event  1: Duration = 0.5500s, Δposition = 8.218° (from   5.00s to   5.55s)
+  Event  2: Duration = 1.6490s, Δposition = 8.422° (from  10.30s to  11.95s)
+  Event  3: Duration = 0.4390s, Δposition = 4.082° (from  15.58s to  16.02s)
+  Event  4: Duration = 0.6700s, Δposition = 5.296° (from  20.88s to  21.55s)
+  Event  5: Duration = 0.2600s, Δposition = 3.340° (from  25.98s to  26.24s)
+  Event  6: Duration = 0.3000s, Δposition = 3.890° (from  31.30s to  31.59s)
+  Event  7: Duration = 0.1500s, Δposition = 6.070° (from  36.52s to  36.67s)
+  Event  8: Duration = 0.1500s, Δposition = 4.550° (from  41.93s to  42.08s)
+  Event  9: Duration = 0.1000s, Δposition = 3.345° (from  52.38s to  52.48s)
+  Event 10: Duration = 5.8970s, Δposition = 26.384° (from  56.98s to  62.88s)
+  Event 11: Duration = 0.2600s, Δposition = 6.685° (from  62.62s to  62.88s)
+  Event 12: Duration = 0.6890s, Δposition = 1.560° (from  67.60s to  68.29s)
+  Event 13: Duration = 0.0400s, Δposition = 1.631° (from  72.82s to  72.86s)
+  Event 14: Duration = 0.2590s, Δposition = 3.440° (from  78.04s to  78.30s)
+  Event 15: Duration = 0.1700s, Δposition = 3.640° (from  88.65s to  88.82s)
+
+--- Test: 21 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.613636
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 107.84%
+Result: Not Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 55.8
+Mean IAE: 1.497
+ Max IAE: 2.603
+Mean ISE: 7.614
+ Max ISE: 26.079
+
+Backlash Events:
+  Event  1: Duration = 0.6100s, Δposition = 8.707° (from   4.98s to   5.59s)
+  Event  2: Duration = 1.7200s, Δposition = 6.410° (from  10.22s to  11.94s)
+  Event  3: Duration = 0.4490s, Δposition = 4.730° (from  15.62s to  16.07s)
+  Event  4: Duration = 0.5200s, Δposition = 3.576° (from  20.99s to  21.51s)
+  Event  5: Duration = 0.2690s, Δposition = 4.158° (from  25.97s to  26.24s)
+  Event  6: Duration = 0.2900s, Δposition = 3.830° (from  31.24s to  31.53s)
+  Event  7: Duration = 0.1600s, Δposition = 5.373° (from  36.48s to  36.64s)
+  Event  8: Duration = 0.1990s, Δposition = 3.760° (from  41.88s to  42.08s)
+  Event  9: Duration = 1.2390s, Δposition = 11.157° (from  51.92s to  53.16s)
+  Event 10: Duration = 1.6590s, Δposition = 6.719° (from  57.10s to  58.76s)
+  Event 11: Duration = 0.4700s, Δposition = 4.071° (from  62.44s to  62.91s)
+  Event 12: Duration = 0.5190s, Δposition = 3.817° (from  67.79s to  68.31s)
+  Event 13: Duration = 0.2500s, Δposition = 4.867° (from  72.78s to  73.03s)
+  Event 14: Duration = 0.3000s, Δposition = 3.850° (from  78.08s to  78.38s)
+  Event 15: Duration = 0.2600s, Δposition = 4.191° (from  83.22s to  83.48s)
+  Event 16: Duration = 0.1600s, Δposition = 5.050° (from  88.72s to  88.89s)
+
+--- Test: 13 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.25
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 109.16%
+Result: Not Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 57.1
+Mean IAE: 1.488
+ Max IAE: 2.503
+Mean ISE: 7.723
+ Max ISE: 25.072
+
+Backlash Events:
+  Event  1: Duration = 0.5900s, Δposition = 10.520° (from   4.99s to   5.58s)
+  Event  2: Duration = 1.6590s, Δposition = 6.075° (from  10.27s to  11.92s)
+  Event  3: Duration = 0.4300s, Δposition = 4.675° (from  15.64s to  16.07s)
+  Event  4: Duration = 0.5700s, Δposition = 7.400° (from  20.97s to  21.54s)
+  Event  5: Duration = 0.2700s, Δposition = 3.692° (from  25.99s to  26.26s)
+  Event  6: Duration = 0.3200s, Δposition = 5.630° (from  31.25s to  31.57s)
+  Event  7: Duration = 0.1500s, Δposition = 4.597° (from  36.50s to  36.65s)
+  Event  8: Duration = 0.1700s, Δposition = 5.620° (from  41.89s to  42.06s)
+  Event  9: Duration = 1.1390s, Δposition = 10.630° (from  51.93s to  53.07s)
+  Event 10: Duration = 1.1400s, Δposition = 12.211° (from  57.65s to  58.79s)
+  Event 11: Duration = 0.6190s, Δposition = 7.526° (from  62.45s to  63.07s)
+  Event 12: Duration = 0.5200s, Δposition = 4.972° (from  67.81s to  68.33s)
+  Event 13: Duration = 0.2790s, Δposition = 3.625° (from  72.80s to  73.08s)
+  Event 14: Duration = 0.3200s, Δposition = 5.150° (from  78.09s to  78.41s)
+  Event 15: Duration = 0.2500s, Δposition = 4.092° (from  83.20s to  83.45s)
+  Event 16: Duration = 0.2200s, Δposition = 4.420° (from  88.66s to  88.88s)
+
+--- Test: 20 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.568182
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 112.29%
+Result: Not Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 55.9
+Mean IAE: 1.459
+ Max IAE: 2.005
+Mean ISE: 7.274
+ Max ISE: 19.183
+
+Backlash Events:
+  Event  1: Duration = 0.5500s, Δposition = 8.454° (from   4.98s to   5.53s)
+  Event  2: Duration = 1.7290s, Δposition = 9.669° (from  10.26s to  11.98s)
+  Event  3: Duration = 0.6400s, Δposition = 6.905° (from  15.57s to  16.21s)
+  Event  4: Duration = 0.5600s, Δposition = 4.828° (from  20.88s to  21.44s)
+  Event  5: Duration = 0.2600s, Δposition = 4.999° (from  25.95s to  26.21s)
+  Event  6: Duration = 0.3200s, Δposition = 3.920° (from  31.26s to  31.58s)
+  Event  7: Duration = 0.1790s, Δposition = 5.131° (from  36.45s to  36.63s)
+  Event  8: Duration = 0.1700s, Δposition = 3.650° (from  41.89s to  42.06s)
+  Event  9: Duration = 1.2290s, Δposition = 12.794° (from  52.01s to  53.24s)
+  Event 10: Duration = 1.2590s, Δposition = 11.277° (from  57.59s to  58.85s)
+  Event 11: Duration = 0.4400s, Δposition = 3.522° (from  62.46s to  62.90s)
+  Event 12: Duration = 0.5890s, Δposition = 6.273° (from  67.71s to  68.30s)
+  Event 13: Duration = 0.2400s, Δposition = 4.450° (from  72.79s to  73.03s)
+  Event 14: Duration = 0.2800s, Δposition = 4.380° (from  78.10s to  78.38s)
+  Event 15: Duration = 0.1800s, Δposition = 5.515° (from  83.28s to  83.46s)
+  Event 16: Duration = 0.2000s, Δposition = 5.190° (from  88.70s to  88.91s)
+
+--- Test: 18 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.477273
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 116.45%
+Result: Not Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 55.3
+Mean IAE: 1.451
+ Max IAE: 2.015
+Mean ISE: 7.000
+ Max ISE: 17.203
+
+Backlash Events:
+  Event  1: Duration = 0.7500s, Δposition = 10.965° (from   4.99s to   5.74s)
+  Event  2: Duration = 1.6590s, Δposition = 4.493° (from  10.29s to  11.94s)
+  Event  3: Duration = 0.4500s, Δposition = 4.955° (from  15.61s to  16.06s)
+  Event  4: Duration = 0.5590s, Δposition = 3.950° (from  20.93s to  21.49s)
+  Event  5: Duration = 0.2500s, Δposition = 3.461° (from  25.98s to  26.23s)
+  Event  6: Duration = 0.3200s, Δposition = 5.320° (from  31.26s to  31.58s)
+  Event  7: Duration = 0.1600s, Δposition = 4.571° (from  36.50s to  36.66s)
+  Event  8: Duration = 0.1600s, Δposition = 3.990° (from  41.92s to  42.08s)
+  Event  9: Duration = 1.2690s, Δposition = 12.991° (from  51.95s to  53.22s)
+  Event 10: Duration = 1.0900s, Δposition = 7.360° (from  57.67s to  58.76s)
+  Event 11: Duration = 0.4300s, Δposition = 4.037° (from  62.46s to  62.89s)
+  Event 12: Duration = 0.8500s, Δposition = 6.702° (from  67.51s to  68.36s)
+  Event 13: Duration = 0.2690s, Δposition = 3.659° (from  72.78s to  73.05s)
+  Event 14: Duration = 0.3300s, Δposition = 3.960° (from  78.09s to  78.42s)
+  Event 15: Duration = 0.1600s, Δposition = 4.675° (from  83.32s to  83.48s)
+  Event 16: Duration = 0.1800s, Δposition = 5.180° (from  88.70s to  88.88s)
+
+--- Test: 24 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.75
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 121.58%
+Result: Not Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 55.0
+Mean IAE: 1.451
+ Max IAE: 1.881
+Mean ISE: 7.102
+ Max ISE: 17.757
+
+Backlash Events:
+  Event  1: Duration = 0.6690s, Δposition = 8.927° (from   4.96s to   5.63s)
+  Event  2: Duration = 1.6090s, Δposition = 7.587° (from  10.30s to  11.91s)
+  Event  3: Duration = 0.4600s, Δposition = 4.873° (from  15.54s to  16.00s)
+  Event  4: Duration = 0.6300s, Δposition = 5.405° (from  20.92s to  21.55s)
+  Event  5: Duration = 0.2500s, Δposition = 5.329° (from  25.94s to  26.19s)
+  Event  6: Duration = 0.2800s, Δposition = 4.290° (from  31.26s to  31.54s)
+  Event  7: Duration = 0.1700s, Δposition = 4.263° (from  36.44s to  36.61s)
+  Event  8: Duration = 0.1600s, Δposition = 3.680° (from  41.89s to  42.05s)
+  Event  9: Duration = 1.3100s, Δposition = 11.349° (from  51.80s to  53.11s)
+  Event 10: Duration = 1.2100s, Δposition = 11.118° (from  57.61s to  58.82s)
+  Event 11: Duration = 0.4490s, Δposition = 5.362° (from  62.36s to  62.81s)
+  Event 12: Duration = 0.6700s, Δposition = 8.515° (from  67.66s to  68.33s)
+  Event 13: Duration = 0.2790s, Δposition = 4.565° (from  72.70s to  72.98s)
+  Event 14: Duration = 0.3400s, Δposition = 4.290° (from  78.05s to  78.39s)
+  Event 15: Duration = 0.1800s, Δposition = 4.796° (from  83.26s to  83.44s)
+  Event 16: Duration = 0.1790s, Δposition = 3.930° (from  88.69s to  88.86s)
+
+--- Test: 15 ---
+Parameters:
+  AntiBacklashMode: Slave speed ref delay
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.340909
+  DegreeOffset: 0.0
+  DegreeGain: 0.0
+
+Detected Backlash Events: 16
+Performance Score: 122.83%
+Result: Not Acceptable
+
+Mean abs speed error: 1.09
+% time speed within ±10%: 56.0
+Mean IAE: 1.479
+ Max IAE: 2.045
+Mean ISE: 7.140
+ Max ISE: 18.259
+
+Backlash Events:
+  Event  1: Duration = 0.6500s, Δposition = 9.619° (from   5.01s to   5.66s)
+  Event  2: Duration = 1.2400s, Δposition = 9.278° (from  10.74s to  11.98s)
+  Event  3: Duration = 0.4700s, Δposition = 3.829° (from  15.53s to  16.00s)
+  Event  4: Duration = 0.7100s, Δposition = 6.218° (from  20.85s to  21.56s)
+  Event  5: Duration = 0.2390s, Δposition = 3.626° (from  25.97s to  26.21s)
+  Event  6: Duration = 0.2800s, Δposition = 5.320° (from  31.26s to  31.54s)
+  Event  7: Duration = 0.1600s, Δposition = 4.043° (from  36.47s to  36.63s)
+  Event  8: Duration = 0.1900s, Δposition = 4.700° (from  41.87s to  42.06s)
+  Event  9: Duration = 1.3290s, Δposition = 13.305° (from  51.95s to  53.28s)
+  Event 10: Duration = 1.2190s, Δposition = 10.064° (from  57.57s to  58.79s)
+  Event 11: Duration = 0.7200s, Δposition = 9.531° (from  62.41s to  63.13s)
+  Event 12: Duration = 0.8390s, Δposition = 4.905° (from  67.55s to  68.39s)
+  Event 13: Duration = 0.2500s, Δposition = 4.477° (from  72.76s to  73.01s)
+  Event 14: Duration = 0.3090s, Δposition = 4.940° (from  78.07s to  78.38s)
+  Event 15: Duration = 0.1700s, Δposition = 4.895° (from  83.27s to  83.44s)
+  Event 16: Duration = 0.1700s, Δposition = 5.160° (from  88.70s to  88.88s)
+
+--- Test: 1 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 180.0
+  DegreeGain: 0.001
+
+Detected Backlash Events: 16
+Performance Score: 126.52%
+Result: Not Acceptable
+
+Mean abs speed error: 1.08
+% time speed within ±10%: 56.5
+Mean IAE: 1.332
+ Max IAE: 2.497
+Mean ISE: 6.572
+ Max ISE: 24.943
+
+Backlash Events:
+  Event  1: Duration = 0.1890s, Δposition = 4.114° (from   5.03s to   5.22s)
+  Event  2: Duration = 1.5590s, Δposition = 6.554° (from  10.38s to  11.94s)
+  Event  3: Duration = 0.4700s, Δposition = 3.829° (from  15.64s to  16.11s)
+  Event  4: Duration = 0.6090s, Δposition = 4.273° (from  20.94s to  21.55s)
+  Event  5: Duration = 0.2600s, Δposition = 4.669° (from  25.98s to  26.24s)
+  Event  6: Duration = 0.3000s, Δposition = 5.020° (from  31.28s to  31.58s)
+  Event  7: Duration = 0.2500s, Δposition = 4.675° (from  36.40s to  36.65s)
+  Event  8: Duration = 0.1600s, Δposition = 3.760° (from  41.91s to  42.07s)
+  Event  9: Duration = 1.1200s, Δposition = 12.997° (from  51.78s to  52.90s)
+  Event 10: Duration = 1.4700s, Δposition = 1.939° (from  57.09s to  58.56s)
+  Event 11: Duration = 0.3600s, Δposition = 7.839° (from  62.34s to  62.70s)
+  Event 12: Duration = 0.7000s, Δposition = 8.784° (from  67.73s to  68.43s)
+  Event 13: Duration = 0.1300s, Δposition = 3.423° (from  72.77s to  72.90s)
+  Event 14: Duration = 0.2700s, Δposition = 5.060° (from  78.10s to  78.37s)
+  Event 15: Duration = 0.0800s, Δposition = 3.209° (from  83.31s to  83.39s)
+  Event 16: Duration = 0.1700s, Δposition = 3.430° (from  88.70s to  88.87s)
+
+--- Test: 12 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 360.0
+  DegreeGain: 0.003
+
+Detected Backlash Events: 16
+Performance Score: 127.86%
+Result: Not Acceptable
+
+Mean abs speed error: 1.25
+% time speed within ±10%: 43.8
+Mean IAE: 1.608
+ Max IAE: 7.537
+Mean ISE: 6.306
+ Max ISE: 16.695
+
+Backlash Events:
+  Event  1: Duration = 0.6190s, Δposition = 11.267° (from   5.02s to   5.64s)
+  Event  2: Duration = 1.0990s, Δposition = 6.054° (from  10.85s to  11.94s)
+  Event  3: Duration = 0.4200s, Δposition = 5.180° (from  15.63s to  16.05s)
+  Event  4: Duration = 0.6190s, Δposition = 7.965° (from  20.94s to  21.56s)
+  Event  5: Duration = 0.2300s, Δposition = 4.466° (from  25.98s to  26.21s)
+  Event  6: Duration = 0.3000s, Δposition = 3.430° (from  31.28s to  31.58s)
+  Event  7: Duration = 0.1700s, Δposition = 5.130° (from  36.46s to  36.63s)
+  Event  8: Duration = 0.1600s, Δposition = 4.310° (from  41.90s to  42.06s)
+  Event  9: Duration = 1.5000s, Δposition = 33.646° (from  53.26s to  54.76s)
+  Event 10: Duration = 5.4080s, Δposition = 6.734° (from  57.50s to  62.91s)
+  Event 11: Duration = 0.2900s, Δposition = 6.295° (from  62.62s to  62.91s)
+  Event 12: Duration = 0.7100s, Δposition = 1.593° (from  67.59s to  68.30s)
+  Event 13: Duration = 0.1700s, Δposition = 3.603° (from  72.67s to  72.84s)
+  Event 14: Duration = 0.2800s, Δposition = 3.350° (from  78.01s to  78.29s)
+  Event 15: Duration = 0.0310s, Δposition = 1.757° (from  83.32s to  83.35s)
+  Event 16: Duration = 0.1600s, Δposition = 4.140° (from  88.65s to  88.81s)
+
+--- Test: 9 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 310.909
+  DegreeGain: 0.00245455
+
+Detected Backlash Events: 15
+Performance Score: 132.50%
+Result: Not Acceptable
+
+Mean abs speed error: 1.16
+% time speed within ±10%: 48.0
+Mean IAE: 1.506
+ Max IAE: 3.895
+Mean ISE: 6.237
+ Max ISE: 17.634
+
+Backlash Events:
+  Event  1: Duration = 1.0200s, Δposition = 15.919° (from   4.96s to   5.98s)
+  Event  2: Duration = 1.6500s, Δposition = 6.493° (from  10.26s to  11.91s)
+  Event  3: Duration = 0.4500s, Δposition = 4.988° (from  15.64s to  16.09s)
+  Event  4: Duration = 0.4900s, Δposition = 3.581° (from  20.98s to  21.47s)
+  Event  5: Duration = 0.2700s, Δposition = 3.598° (from  25.98s to  26.25s)
+  Event  6: Duration = 0.3000s, Δposition = 4.080° (from  31.26s to  31.56s)
+  Event  7: Duration = 0.1800s, Δposition = 5.109° (from  36.47s to  36.65s)
+  Event  8: Duration = 0.1700s, Δposition = 4.320° (from  41.87s to  42.04s)
+  Event  9: Duration = 0.8990s, Δposition = 16.760° (from  51.82s to  52.72s)
+  Event 10: Duration = 3.5480s, Δposition = 25.653° (from  56.85s to  60.40s)
+  Event 11: Duration = 0.3800s, Δposition = 9.993° (from  62.43s to  62.81s)
+  Event 12: Duration = 0.8100s, Δposition = 3.269° (from  67.52s to  68.33s)
+  Event 13: Duration = 0.0400s, Δposition = 1.752° (from  72.80s to  72.84s)
+  Event 14: Duration = 0.3190s, Δposition = 3.520° (from  78.04s to  78.36s)
+  Event 15: Duration = 0.1690s, Δposition = 2.770° (from  88.62s to  88.78s)
+
+--- Test: 11 ---
+Parameters:
+  AntiBacklashMode: Actual position offset
+  Offset: 0.0
+  BaseTorque: 0.0
+  GainTorque: 0.0
+  LoadTorque: 4.0
+  MaxTorque: 5.0
+  SlaveDroop: 0.0
+  MasterDroop: 0.0
+  SlaveDelay: 0.0
+  DegreeOffset: 343.636
+  DegreeGain: 0.00281818
+
+Detected Backlash Events: 16
+Performance Score: 183.01%
+Result: Not Acceptable
+
+Mean abs speed error: 1.21
+% time speed within ±10%: 46.2
+Mean IAE: 1.690
+ Max IAE: 8.208
+Mean ISE: 6.731
+ Max ISE: 25.161
+
+Backlash Events:
+  Event  1: Duration = 0.2100s, Δposition = 3.697° (from   4.98s to   5.19s)
+  Event  2: Duration = 1.6490s, Δposition = 2.758° (from  10.23s to  11.88s)
+  Event  3: Duration = 0.4400s, Δposition = 3.878° (from  15.58s to  16.02s)
+  Event  4: Duration = 0.6890s, Δposition = 9.135° (from  20.90s to  21.59s)
+  Event  5: Duration = 0.2600s, Δposition = 3.554° (from  25.97s to  26.23s)
+  Event  6: Duration = 0.3000s, Δposition = 4.990° (from  31.25s to  31.55s)
+  Event  7: Duration = 0.2500s, Δposition = 4.439° (from  36.40s to  36.65s)
+  Event  8: Duration = 0.1900s, Δposition = 4.850° (from  41.86s to  42.05s)
+  Event  9: Duration = 2.0290s, Δposition = 44.122° (from  52.66s to  54.69s)
+  Event 10: Duration = 6.0270s, Δposition = 9.641° (from  56.85s to  62.88s)
+  Event 11: Duration = 0.0600s, Δposition = 2.389° (from  62.82s to  62.88s)
+  Event 12: Duration = 0.6900s, Δposition = 2.637° (from  67.59s to  68.28s)
+  Event 13: Duration = 0.0200s, Δposition = 0.725° (from  72.82s to  72.84s)
+  Event 14: Duration = 0.2500s, Δposition = 3.530° (from  78.01s to  78.26s)
+  Event 15: Duration = 0.0200s, Δposition = 0.983° (from  83.28s to  83.30s)
+  Event 16: Duration = 0.1600s, Δposition = 4.240° (from  88.65s to  88.81s)
+
