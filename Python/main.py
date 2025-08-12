@@ -182,102 +182,68 @@ for test_index in test_indices:
     test_validity[test_index] = is_valid
 
     # --- Backlash Analysis ---
+    # Define intervals starting each time SpeedRef changes polarity (sign flips),
+    # ignoring transitions that only go to 0.
+    # Each interval has fixed length of 1.5 seconds.
     backlash_results = []
-    # Find points where SpeedRef changes sign.
-    last_sign = 0
-    reversal_indices = []
-    # Find the first non-zero speed reference to establish the initial direction.
-    first_move_index = df_test['SpeedRef'].ne(0).idxmax()
-    if first_move_index is not None:
-        reversal_indices.append(first_move_index)
-        last_sign = np.sign(df_test['SpeedRef'].loc[first_move_index])
+    last_nonzero_sign = None
+    last_nonzero_index = None  # keep for potential future use
+    sign_series = np.sign(df_test['SpeedRef'].to_numpy())
+    times = df_test['Time (s)'].to_numpy()
 
-        for idx, speed in df_test['SpeedRef'].loc[first_move_index+1:].items():
-            current_sign = np.sign(speed)
-            if current_sign != 0:
-                if current_sign != last_sign:
-                    reversal_indices.append(idx)
-                last_sign = current_sign
+    def add_interval(start_sample_index: int):
+        t_start_local = times[start_sample_index]
+        t_end_target_local = t_start_local + 1.5
+        # Fast search for end index (first time > target) then step one back
+        end_idx_local = np.searchsorted(times, t_end_target_local, side='right') - 1
+        if end_idx_local < start_sample_index:
+            return
+        t_end_local = times[end_idx_local]
+        duration_local = t_end_local - t_start_local
+        if duration_local <= 0:
+            return
+        pos_start_local = df_test['ENC1Position'].iloc[start_sample_index]
+        pos_end_local = df_test['ENC1Position'].iloc[end_idx_local]
+        movement_local = abs(pos_end_local - pos_start_local)
+        interval_df_local = df_test.iloc[start_sample_index:end_idx_local+1].copy()
+        dt_local = interval_df_local['Time (s)'].diff().fillna(0)
+        iae_local = (interval_df_local['SpeedError'].abs() * dt_local).sum()
+        ise_local = ((interval_df_local['SpeedError']**2) * dt_local).sum()
+        speed_ref_start = df_test['SpeedRef'].iloc[start_sample_index]
+        driving_motor_pos_col = 'FC1Position' if speed_ref_start >= 0 else 'FC2Position'
+        motor_pos_start = df_test[driving_motor_pos_col].iloc[start_sample_index]
+        motor_pos_end = df_test[driving_motor_pos_col].iloc[end_idx_local]
+        motor_delta = abs(motor_pos_end - motor_pos_start)
+        encoder_delta = movement_local  # already abs ENC1 position change
+        backlash_deg = max(0.0, motor_delta - encoder_delta)
+        backlash_results.append({
+            'start': t_start_local,
+            'end': t_end_local,
+            'duration': duration_local,
+            'movement': movement_local,
+            'IAE': iae_local,
+            'ISE': ise_local,
+            'backlash_deg': backlash_deg,
+            'motor_delta': motor_delta,
+            'encoder_delta': encoder_delta,
+            'driving_motor': driving_motor_pos_col
+        })
 
-
-    MIN_LEN = 25
-    SKIP_MATCHES = [8]
-    num_matches = 0
-    
-    for rev_idx in reversal_indices:
-        search_df = df_test.loc[rev_idx:].copy()
-    
-        starts = []
-        i = 0
-        v = search_df['SpeedRef'].to_numpy()
-
-        while i < len(v)-1:
-            if v[i+1] > v[i] and v[i] < 0:
-                num_matches += 1
-                if num_matches in SKIP_MATCHES:
-                    i += 1000
-                    continue
-                starts.append(i)
-                i += MIN_LEN
-                continue
-
-            if v[i+1] < v[i] and v[i] > 0:
-                num_matches += 1
-                if num_matches in SKIP_MATCHES:
-                    i += 1000
-                    continue
-                starts.append(i)
-                i += MIN_LEN
-                continue
-            
-            i += 1
-            
-        start_events = search_df.iloc[starts]
-        if len(start_events) >= 8:
-            start_events = start_events.drop(start_events.index[7])
-
-        if start_events.empty:
+    for idx, s in enumerate(sign_series):
+        if s == 0:
+            continue  # ignore zeros for polarity change detection
+        if last_nonzero_sign is None:
+            add_interval(idx)  # first movement interval
+            last_nonzero_sign = s
+            last_nonzero_index = idx
             continue
-        
-        t_start = start_events['Time (s)'].iloc[0]
-        start_idx = start_events.index[0]
-
-        # samples later, N=100 -> t=1s
-        N = 100
-        
-        # Backlash ends after 2 sec
-        end_search_df = df_test.loc[start_idx:]
-        end_events = end_search_df.iloc[[min(N, len(end_search_df) - 1)]]
-        if end_events.empty:
-            continue
-            
-        t_end = end_events['Time (s)'].iloc[0]
-        end_idx = end_events.index[0]
-        duration = t_end - t_start
-        
-        # compute how much ENC1Position changes during interval
-        pos_start = df_test.at[start_idx, 'ENC1Position']
-        pos_end = df_test.at[end_idx, 'ENC1Position']
-        movement = abs(pos_end - pos_start)
-        
-        # IAE and ISE
-        interval_df = df_test.loc[start_idx:end_idx].copy()
-        dt = interval_df['Time (s)'].diff().fillna(0)
-        iae = (interval_df['SpeedError'].abs() * dt).sum()
-        ise = ((interval_df['SpeedError']**2) * dt).sum()
-
-        if duration > 0:
-            backlash_results.append({'start': t_start, 'end': t_end, 'duration': duration, 'movement': movement, "IAE": iae, "ISE": ise})
-
-    #checking if we have duplicate events
-    unique = []
-    seen = set()
-    for res in backlash_results:
-        key = (round(res['start'], 3), round(res['end'], 3))
-        if key not in seen:
-            seen.add(key)
-            unique.append(res)
-    backlash_results = unique
+        if s != last_nonzero_sign:
+            add_interval(idx)
+            last_nonzero_sign = s
+            last_nonzero_index = idx
+        else:
+            last_nonzero_sign = s
+            last_nonzero_index = idx
 
     # --- Log Results & Performance Score ---
     if backlash_results:
@@ -295,18 +261,38 @@ for test_index in test_indices:
 
         current_score = None
         # Calculate performance score if we have 16 events and the test is valid
-        # changed score from duration to movement
-        if len(backlash_results) > 15 and is_valid:
-            sum1_8 = sum(res['movement'] for res in backlash_results[0:8])
-            sum9_16 = sum(res['movement'] for res in backlash_results[8:16])
+        if len(backlash_results) >= 16 and is_valid:
+            event_diff_sums = []
+            for ev in backlash_results[:16]:  # only first 16 matter for score
+                start_t = ev['start']
+                end_t = ev['end']
+                ev_df = df_test[(df_test['Time (s)'] >= start_t) & (df_test['Time (s)'] <= end_t)]
+                if ev_df.empty:
+                    event_diff_sums.append(0.0)
+                    continue
+                pos_mask = ev_df['SpeedRef'] > 0
+                neg_mask = ev_df['SpeedRef'] < 0
+                pos_sum = (ev_df.loc[pos_mask, 'ENC1Speed'] - ev_df.loc[pos_mask, 'FC1Speed']).abs().sum()
+                neg_sum = (ev_df.loc[neg_mask, 'ENC1Speed'] - ev_df.loc[neg_mask, 'FC2Speed']).abs().sum()
+                diff_sum = pos_sum + neg_sum
+                ev['diff_sum'] = diff_sum  # store for potential logging
+                event_diff_sums.append(diff_sum)
 
+            sum1_8 = sum(event_diff_sums[0:8])
+            sum9_16 = sum(event_diff_sums[8:16])
             if sum1_8 > 0:
-                performance_score = (sum9_16 / sum1_8) * 100
+                performance_score = (sum9_16 / sum1_8) * 100.0
                 performance_scores[test_index] = performance_score
                 current_score = performance_score
 
         iae_list = [e['IAE'] for e in backlash_results]
         ise_list = [e['ISE'] for e in backlash_results]
+        backlash_deg_list = [e.get('backlash_deg', 0.0) for e in backlash_results]
+        mean_backlash_first8 = np.mean(backlash_deg_list[0:8]) if len(backlash_deg_list) >= 8 else np.nan
+        mean_backlash_last8 = np.mean(backlash_deg_list[8:16]) if len(backlash_deg_list) >= 16 else np.nan
+        backlash_reduction_pct = None
+        if not np.isnan(mean_backlash_first8) and mean_backlash_first8 > 0 and not np.isnan(mean_backlash_last8):
+            backlash_reduction_pct = (mean_backlash_last8 / mean_backlash_first8) * 100.0
 
         mean_iae = np.mean(iae_list)
         max_iae = np.max(iae_list)
@@ -325,7 +311,10 @@ for test_index in test_indices:
             "mean_iae": mean_iae,
             'max_iae': max_iae,
             'mean_ise': mean_ise,
-            "max_ise": max_ise
+            "max_ise": max_ise,
+            'mean_backlash_first8': mean_backlash_first8,
+            'mean_backlash_last8': mean_backlash_last8,
+            'backlash_reduction_pct': backlash_reduction_pct
         })
 
 
@@ -411,10 +400,25 @@ with open(output_filename, 'w', encoding='utf-8') as f:
         result_string += f" Max IAE: {result['max_iae']:.3f}\n"
         result_string += f"Mean ISE: {result['mean_ise']:.3f}\n"
         result_string += f" Max ISE: {result['max_ise']:.3f}\n"
+        if 'mean_backlash_first8' in result and not np.isnan(result['mean_backlash_first8']):
+            result_string += f"Mean Backlash First 8: {result['mean_backlash_first8']:.3f}°\n"
+        if 'mean_backlash_last8' in result and not np.isnan(result['mean_backlash_last8']):
+            result_string += f"Mean Backlash Last 8: {result['mean_backlash_last8']:.3f}°\n"
+        if result.get('backlash_reduction_pct') is not None:
+            result_string += f"Backlash Reduction % (last/first*100): {result['backlash_reduction_pct']:.2f}%\n"
      
         result_string += "\nBacklash Events:\n"
         for i, res in enumerate(result['backlash_results']):
-            result_string += f"  Event {i+1:2d}: Duration = {res['duration']:.4f}s, Δposition = {res['movement']:.3f}° (from {res['start']:6.2f}s to {res['end']:6.2f}s)\n"
+            extra = ""
+            if 'diff_sum' in res:
+                extra = f", diff_sum = {res['diff_sum']:.3f}"
+            backlash_info = ''
+            if 'backlash_deg' in res:
+                backlash_info = f", backlash = {res['backlash_deg']:.3f}°"
+            result_string += (
+                f"  Event {i+1:2d}: Duration = {res['duration']:.4f}s, Δposition = {res['movement']:.3f}°"
+                f" (from {res['start']:6.2f}s to {res['end']:6.2f}s){backlash_info}{extra}\n"
+            )
         
         f.write(result_string + "\n")
 
@@ -432,7 +436,6 @@ while True:
     choice = input("Enter your choice: ")
 
     if choice == '1':
-        # ...existing code...
         if best_test_index is not None:
             test_to_plot = next((r for r in all_test_results if r['test_index'] == best_test_index), None)
             if test_to_plot:
@@ -440,26 +443,21 @@ while True:
         else:
             print("No best test found to plot.")
     elif choice == '2':
-        # ...existing code...
         tests_to_plot = [r for r in all_test_results if r['is_valid'] and r['performance_score'] is not None and r['performance_score'] < 100]
         for test in tests_to_plot:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '3':
-        # ...existing code...
         tests_to_plot = [r for r in all_test_results if not r['is_valid']]
         for test in tests_to_plot:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '4':
-        # ...existing code...
         tests_to_plot = [r for r in all_test_results if r['is_valid'] and r['performance_score'] is not None and r['performance_score'] >= 100]
         for test in tests_to_plot:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '5':
-        # ...existing code...
         for test in all_test_results:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '6':
-        # NEW: Top 20 overall (lowest performance_score). Only tests with a score.
         top_tests = sorted(
             [r for r in all_test_results if r['performance_score'] is not None],
             key=lambda x: x['performance_score']
