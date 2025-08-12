@@ -26,8 +26,6 @@ performance_scores = {}
 test_validity = {}
 all_test_results = []
 
-WITHIN_PERCENTAGE = 10
-
 ANTIBACKLASH_MODE_MAP = {
     0: "Adaptive torque",
     1: "Constant torque",
@@ -149,12 +147,6 @@ for test_index in test_indices:
     
     # Calculate elapsed time in seconds for each test run
     df_test['Time (s)'] = (df_test['Timestamp'] - df_test['Timestamp'].iloc[0]).dt.total_seconds()
-    
-    # get results
-    df_test['SpeedError'] = df_test['ENC1Speed'] - df_test['SpeedRef']
-    mean_abs_error = df_test['SpeedError'].abs().mean()
-    within_pcs = (df_test['SpeedError'].abs() <= df_test['SpeedRef'].abs() * WITHIN_PERCENTAGE/100).mean() * 100
-
 
     # --- Test Validity Check ---
     # A test is invalid if ENC1Speed never reaches 90% of SpeedRef (positive and negative) while AntiBacklash is enabled.
@@ -206,9 +198,6 @@ for test_index in test_indices:
         pos_end_local = df_test['ENC1Position'].iloc[end_idx_local]
         movement_local = abs(pos_end_local - pos_start_local)
         interval_df_local = df_test.iloc[start_sample_index:end_idx_local+1].copy()
-        dt_local = interval_df_local['Time (s)'].diff().fillna(0)
-        iae_local = (interval_df_local['SpeedError'].abs() * dt_local).sum()
-        ise_local = ((interval_df_local['SpeedError']**2) * dt_local).sum()
         speed_ref_start = df_test['SpeedRef'].iloc[start_sample_index]
         driving_motor_pos_col = 'FC1Position' if speed_ref_start >= 0 else 'FC2Position'
         motor_pos_start = df_test[driving_motor_pos_col].iloc[start_sample_index]
@@ -221,8 +210,6 @@ for test_index in test_indices:
             'end': t_end_local,
             'duration': duration_local,
             'movement': movement_local,
-            'IAE': iae_local,
-            'ISE': ise_local,
             'backlash_deg': backlash_deg,
             'motor_delta': motor_delta,
             'encoder_delta': encoder_delta,
@@ -259,11 +246,11 @@ for test_index in test_indices:
         ]
         param_values_for_log = {name: df_test[name].iloc[0] for name in param_names_for_log}
 
-        current_score = None
-        # Calculate performance score if we have 16 events and the test is valid
+        current_speed_score = None  # speed-based metric (legacy)
+        # Calculate speed-based score if we have 16 events and the test is valid
         if len(backlash_results) >= 16 and is_valid:
             event_diff_sums = []
-            for ev in backlash_results[:16]:  # only first 16 matter for score
+            for ev in backlash_results[:16]:  # only first 16 matter for speed score
                 start_t = ev['start']
                 end_t = ev['end']
                 ev_df = df_test[(df_test['Time (s)'] >= start_t) & (df_test['Time (s)'] <= end_t)]
@@ -275,43 +262,34 @@ for test_index in test_indices:
                 pos_sum = (ev_df.loc[pos_mask, 'ENC1Speed'] - ev_df.loc[pos_mask, 'FC1Speed']).abs().sum()
                 neg_sum = (ev_df.loc[neg_mask, 'ENC1Speed'] - ev_df.loc[neg_mask, 'FC2Speed']).abs().sum()
                 diff_sum = pos_sum + neg_sum
-                ev['diff_sum'] = diff_sum  # store for potential logging
+                ev['diff_sum'] = diff_sum
                 event_diff_sums.append(diff_sum)
 
             sum1_8 = sum(event_diff_sums[0:8])
             sum9_16 = sum(event_diff_sums[8:16])
             if sum1_8 > 0:
-                performance_score = (sum9_16 / sum1_8) * 100.0
-                performance_scores[test_index] = performance_score
-                current_score = performance_score
+                current_speed_score = (sum9_16 / sum1_8) * 100.0
 
-        iae_list = [e['IAE'] for e in backlash_results]
-        ise_list = [e['ISE'] for e in backlash_results]
         backlash_deg_list = [e.get('backlash_deg', 0.0) for e in backlash_results]
         mean_backlash_first8 = np.mean(backlash_deg_list[0:8]) if len(backlash_deg_list) >= 8 else np.nan
         mean_backlash_last8 = np.mean(backlash_deg_list[8:16]) if len(backlash_deg_list) >= 16 else np.nan
         backlash_reduction_pct = None
         if not np.isnan(mean_backlash_first8) and mean_backlash_first8 > 0 and not np.isnan(mean_backlash_last8):
-            backlash_reduction_pct = (mean_backlash_last8 / mean_backlash_first8) * 100.0
+            backlash_reduction_pct = 100 - (mean_backlash_last8 / mean_backlash_first8) * 100.0
 
-        mean_iae = np.mean(iae_list)
-        max_iae = np.max(iae_list)
-        mean_ise = np.mean(ise_list)
-        max_ise = np.max(ise_list)
-        
+        # Set performance_score to backlash reduction percentage
+        performance_score = backlash_reduction_pct if backlash_reduction_pct is not None else None
+        if performance_score is not None:
+            performance_scores[test_index] = performance_score
+
         all_test_results.append({
             'test_index': test_index,
             'is_valid': is_valid,
             'params': param_values_for_log,
             'backlash_results': backlash_results,
-            'performance_score': current_score,
+            'performance_score': performance_score,  # backlash reduction %
+            'speed_score': current_speed_score,      # speed diff ratio % (lower still better)
             'df_test': df_test,
-            'mean_abs_error': mean_abs_error,
-            'within_pcs': within_pcs,
-            "mean_iae": mean_iae,
-            'max_iae': max_iae,
-            'mean_ise': mean_ise,
-            "max_ise": max_ise,
             'mean_backlash_first8': mean_backlash_first8,
             'mean_backlash_last8': mean_backlash_last8,
             'backlash_reduction_pct': backlash_reduction_pct
@@ -322,29 +300,12 @@ for test_index in test_indices:
 summary_string = ""
 best_test_index = None
 if performance_scores:
-    # Find the test with the best (lowest) performance score
-    best_test_index = min(performance_scores, key=performance_scores.get)
+    # Higher backlash reduction is better.
+    best_test_index = max(performance_scores, key=performance_scores.get)
     best_score = performance_scores[best_test_index]
-
-    acceptable_tests = [test for test, score in performance_scores.items() if score < 100]
-    unacceptable_tests = [test for test, score in performance_scores.items() if score >= 100]
-    
     num_scored_tests = len(performance_scores)
-    num_acceptable = len(acceptable_tests)
-    
-    percentage_acceptable = (num_acceptable / num_scored_tests) * 100 if num_scored_tests > 0 else 0
-
-    summary_string += "--- Performance Summary ---\n"
-    summary_string += f"Best performance was in Test {round(best_test_index)} with a score of {best_score:.2f}%.\n"
-    summary_string += "A score under 100% is acceptable. Lower is better.\n"
-    summary_string += f"\n{num_acceptable} out of {num_scored_tests} scored tests were acceptable ({percentage_acceptable:.1f}%).\n"
-
-    if unacceptable_tests:
-        summary_string += "\nThe following tests had unacceptable scores (>= 100%):\n"
-        # Sort unacceptable tests by their score
-        unacceptable_tests_sorted = sorted(unacceptable_tests, key=lambda x: performance_scores[x])
-        for test in unacceptable_tests_sorted:
-            summary_string += f"  - Test {round(test)}: {performance_scores[test]:.2f}%\n"
+    summary_string += "--- Backlash Reduction Performance Summary ---\n"
+    summary_string += f"Best backlash reduction was in Test {round(best_test_index)}: {best_score:.2f}% reduction.\n"
 else:
     summary_string += "\nNo valid tests were found to calculate performance scores.\n"
 
@@ -360,7 +321,8 @@ print("\n" + summary_string)
 # --- Write Sorted Log File ---
 # Sort results: valid tests by score, then invalid tests at the bottom
 # all_test_results.sort(key=lambda x: (not x['is_valid'], x['performance_score'] if x['performance_score'] is not None else float('inf')))
-all_test_results.sort(key=lambda x: (x['performance_score'] if x['performance_score'] is not None else float('inf')))
+# Sort descending (higher backlash reduction better); None at end
+all_test_results.sort(key=lambda x: (-(x['performance_score']) if x['performance_score'] is not None else float('-inf')))
 
 # changed to encoding=utf-8
 with open(output_filename, 'w', encoding='utf-8') as f:
@@ -386,26 +348,15 @@ with open(output_filename, 'w', encoding='utf-8') as f:
         result_string += f"Detected Backlash Events: {len(result['backlash_results'])}\n"
         
         if result['performance_score'] is not None:
-            result_string += f"Performance Score: {result['performance_score']:.2f}%\n"
-            if result['performance_score'] < 100:
-                result_string += "Result: Acceptable\n"
-            else:
-                result_string += "Result: Not Acceptable\n"
-        elif len(result['backlash_results']) == 31:
-             result_string += "Performance Score: N/A (sum of first 8 events is zero)\n"
-
-        result_string += f"\nMean abs speed error: {result['mean_abs_error']:.2f}\n"
-        result_string += f"% time speed within \u00B1{WITHIN_PERCENTAGE}%: {result['within_pcs']:.1f}\n"
-        result_string += f"Mean IAE: {result['mean_iae']:.3f}\n"
-        result_string += f" Max IAE: {result['max_iae']:.3f}\n"
-        result_string += f"Mean ISE: {result['mean_ise']:.3f}\n"
-        result_string += f" Max ISE: {result['max_ise']:.3f}\n"
+            result_string += f"Backlash Reduction Performance Score: {result['performance_score']:.2f}% (higher is better)\n"
+        if result.get('speed_score') is not None:
+            result_string += f"Speed Score (last8/first8 diff ratio): {result['speed_score']:.2f}% (lower is better)\n"
         if 'mean_backlash_first8' in result and not np.isnan(result['mean_backlash_first8']):
-            result_string += f"Mean Backlash First 8: {result['mean_backlash_first8']:.3f}°\n"
+            result_string += f"Mean Backlash AB Disabled: {result['mean_backlash_first8']:.3f}°\n"
         if 'mean_backlash_last8' in result and not np.isnan(result['mean_backlash_last8']):
-            result_string += f"Mean Backlash Last 8: {result['mean_backlash_last8']:.3f}°\n"
+            result_string += f"Mean Backlash AB Enabled: {result['mean_backlash_last8']:.3f}°\n"
         if result.get('backlash_reduction_pct') is not None:
-            result_string += f"Backlash Reduction % (last/first*100): {result['backlash_reduction_pct']:.2f}%\n"
+            result_string += f"Backlash Reduction %: {result['backlash_reduction_pct']:.2f}%\n"
      
         result_string += "\nBacklash Events:\n"
         for i, res in enumerate(result['backlash_results']):
@@ -431,6 +382,7 @@ while True:
     print("4. Show plots for all UNACCEPTABLE tests")
     print("5. Show plots for ALL tests")
     print("6. Show plots for TOP 20 tests")
+    print("7. Show TOP 5 tests for a specific AntiBacklashMode")
     print("0. Exit")
     
     choice = input("Enter your choice: ")
@@ -460,7 +412,8 @@ while True:
     elif choice == '6':
         top_tests = sorted(
             [r for r in all_test_results if r['performance_score'] is not None],
-            key=lambda x: x['performance_score']
+            key=lambda x: x['performance_score'],
+            reverse=True
         )[:20]
         if not top_tests:
             print("No scored tests available.")
@@ -468,6 +421,34 @@ while True:
             print(f"Plotting {len(top_tests)} best overall tests.")
             for test in top_tests:
                 generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+    elif choice == '7':
+        print("Available Modes:")
+        for k,v in ANTIBACKLASH_MODE_MAP.items():
+            print(f"  {k}: {v}")
+        mode_input = input("Enter mode number or name: ").strip().lower()
+        selected_mode = None
+        # Try numeric first
+        if mode_input.isdigit():
+            mi = int(mode_input)
+            if mi in ANTIBACKLASH_MODE_MAP:
+                selected_mode = mi
+        if selected_mode is None:
+            # match by name (case-insensitive, partial allowed)
+            for k,v in ANTIBACKLASH_MODE_MAP.items():
+                if mode_input == v.lower() or mode_input in v.lower():
+                    selected_mode = k
+                    break
+        if selected_mode is None:
+            print("Could not identify mode.")
+        else:
+            mode_tests = [r for r in all_test_results if r['params'].get('AntiBacklashMode') == selected_mode and r['performance_score'] is not None]
+            if not mode_tests:
+                print("No tests found for that mode with a performance score.")
+            else:
+                mode_tests_sorted = sorted(mode_tests, key=lambda x: x['performance_score'], reverse=True)[:20]
+                print(f"Plotting top {len(mode_tests_sorted)} tests for mode {selected_mode}: {ANTIBACKLASH_MODE_MAP[selected_mode]}")
+                for test in mode_tests_sorted:
+                    generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '0':
         break
     else:
