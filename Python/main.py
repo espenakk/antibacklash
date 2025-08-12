@@ -445,7 +445,7 @@ while True:
             if not mode_tests:
                 print("No tests found for that mode with a performance score.")
             else:
-                mode_tests_sorted = sorted(mode_tests, key=lambda x: x['performance_score'], reverse=True)[:20]
+                mode_tests_sorted = sorted(mode_tests, key=lambda x: x['performance_score'], reverse=True)[:5]
                 print(f"Plotting top {len(mode_tests_sorted)} tests for mode {selected_mode}: {ANTIBACKLASH_MODE_MAP[selected_mode]}")
                 for test in mode_tests_sorted:
                     generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
