@@ -1,7 +1,7 @@
 Backlash Analysis Results for Python/data/log.csv
 
 --- Performance Summary ---
-Best performance was in Test 13 with a score of 85.35%.
+Best performance was in Test 7 with a score of 82.35%.
 A score under 100% is acceptable. Lower is better.
 
 9 out of 14 scored tests were acceptable (64.3%).
@@ -21,16 +21,62 @@ The following tests were disqualified for not meeting speed requirements:
   - Test 12
 
 
+--- Test: 7 ---
+Status: INVALID (Did not find 16 backlash events)
+Parameters:
+  AntiBacklashMode: Speed ref offset
+  Offset: 10.0
+  BaseTorque: 3.3
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
+  SlaveDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
+
+Detected Backlash Events: 15
+Performance Score: 82.35%
+Result: Acceptable
+
+Mean abs speed error: 1.20
+% time speed within ±10%: 48.0
+Mean IAE: 1.344
+ Max IAE: 2.385
+Mean ISE: 6.606
+ Max ISE: 23.721
+
+Backlash Events:
+  Event  1: Duration = 0.5300s, Δposition = 10.152° (from   5.08s to   5.61s)
+  Event  2: Duration = 1.0800s, Δposition = 11.217° (from  10.84s to  11.92s)
+  Event  3: Duration = 0.5900s, Δposition = 9.476° (from  15.68s to  16.27s)
+  Event  4: Duration = 0.5600s, Δposition = 7.388° (from  20.94s to  21.50s)
+  Event  5: Duration = 0.2400s, Δposition = 4.296° (from  25.98s to  26.22s)
+  Event  6: Duration = 0.2600s, Δposition = 4.810° (from  31.25s to  31.51s)
+  Event  7: Duration = 0.2400s, Δposition = 5.619° (from  36.35s to  36.59s)
+  Event  8: Duration = 0.1700s, Δposition = 4.980° (from  41.84s to  42.01s)
+  Event  9: Duration = 1.0700s, Δposition = 13.256° (from  51.86s to  52.93s)
+  Event 10: Duration = 1.2300s, Δposition = 5.811° (from  57.02s to  58.25s)
+  Event 11: Duration = 0.3600s, Δposition = 7.064° (from  62.15s to  62.51s)
+  Event 12: Duration = 0.6300s, Δposition = 9.915° (from  67.55s to  68.18s)
+  Event 13: Duration = 0.1600s, Δposition = 4.636° (from  72.57s to  72.73s)
+  Event 14: Duration = 0.2800s, Δposition = 3.410° (from  77.88s to  78.16s)
+  Event 15: Duration = 0.1400s, Δposition = 3.620° (from  88.48s to  88.62s)
+
 --- Test: 13 ---
 Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 2.5
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 85.35%
@@ -66,11 +112,14 @@ Parameters:
   AntiBacklashMode: Constant torque
   Offset: 1.0
   BaseTorque: 3.2
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 87.14%
@@ -101,56 +150,19 @@ Backlash Events:
   Event 15: Duration = 0.1600s, Δposition = 3.851° (from  83.05s to  83.21s)
   Event 16: Duration = 0.1800s, Δposition = 4.200° (from  88.45s to  88.63s)
 
---- Test: 7 ---
-Parameters:
-  AntiBacklashMode: Speed cmd offset
-  Offset: 10.0
-  BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
-  SlaveDroop: 0.0
-  MasterDroop: 0.0
-
-Detected Backlash Events: 16
-Performance Score: 88.60%
-Result: Acceptable
-
-Mean abs speed error: 1.20
-% time speed within ±10%: 48.0
-Mean IAE: 1.355
- Max IAE: 2.385
-Mean ISE: 7.227
- Max ISE: 23.721
-
-Backlash Events:
-  Event  1: Duration = 0.5300s, Δposition = 10.152° (from   5.08s to   5.61s)
-  Event  2: Duration = 1.0800s, Δposition = 11.217° (from  10.84s to  11.92s)
-  Event  3: Duration = 0.5900s, Δposition = 9.476° (from  15.68s to  16.27s)
-  Event  4: Duration = 0.5600s, Δposition = 7.388° (from  20.94s to  21.50s)
-  Event  5: Duration = 0.2400s, Δposition = 4.296° (from  25.98s to  26.22s)
-  Event  6: Duration = 0.2600s, Δposition = 4.810° (from  31.25s to  31.51s)
-  Event  7: Duration = 0.2400s, Δposition = 5.619° (from  36.35s to  36.59s)
-  Event  8: Duration = 0.1700s, Δposition = 4.980° (from  41.84s to  42.01s)
-  Event  9: Duration = 1.0700s, Δposition = 13.256° (from  51.86s to  52.93s)
-  Event 10: Duration = 1.2300s, Δposition = 5.811° (from  57.02s to  58.25s)
-  Event 11: Duration = 0.3600s, Δposition = 7.064° (from  62.15s to  62.51s)
-  Event 12: Duration = 0.6300s, Δposition = 9.915° (from  67.55s to  68.18s)
-  Event 13: Duration = 0.1600s, Δposition = 4.636° (from  72.57s to  72.73s)
-  Event 14: Duration = 0.2800s, Δposition = 3.410° (from  77.88s to  78.16s)
-  Event 15: Duration = 0.1400s, Δposition = 3.620° (from  88.48s to  88.62s)
-  Event 16: Duration = 0.1400s, Δposition = 3.620° (from  88.48s to  88.62s)
-
 --- Test: 16 ---
 Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.75
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 90.47%
@@ -186,11 +198,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 1.5
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 91.66%
@@ -226,11 +241,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.85
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 96.91%
@@ -263,14 +281,17 @@ Backlash Events:
 
 --- Test: 6 ---
 Parameters:
-  AntiBacklashMode: Speed cmd offset
+  AntiBacklashMode: Speed ref offset
   Offset: 5.0
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 97.00%
@@ -306,11 +327,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 1.75
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 98.32%
@@ -346,11 +370,14 @@ Parameters:
   AntiBacklashMode: Constant torque
   Offset: 1.0
   BaseTorque: 3.5
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 98.33%
@@ -386,11 +413,14 @@ Parameters:
   AntiBacklashMode: Adaptive torque
   Offset: 1.0
   BaseTorque: 3.0
-  GainTorque: 5.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 5
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 100.09%
@@ -423,14 +453,17 @@ Backlash Events:
 
 --- Test: 5 ---
 Parameters:
-  AntiBacklashMode: Speed cmd offset
+  AntiBacklashMode: Speed ref offset
   Offset: 1.0
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 105.06%
@@ -463,14 +496,17 @@ Backlash Events:
 
 --- Test: 9 ---
 Parameters:
-  AntiBacklashMode: Speed cmd offset
+  AntiBacklashMode: Speed ref offset
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 106.79%
@@ -506,11 +542,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 1.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 109.69%
@@ -546,11 +585,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.9
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 Performance Score: 126.09%
@@ -587,11 +629,14 @@ Parameters:
   AntiBacklashMode: Constant torque
   Offset: 1.0
   BaseTorque: 3.0
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 
@@ -626,11 +671,14 @@ Parameters:
   AntiBacklashMode: Constant torque
   Offset: 1.0
   BaseTorque: 2.5
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 
@@ -662,14 +710,17 @@ Backlash Events:
 --- Test: 8 ---
 Status: INVALID (ENC1Speed did not reach SpeedRef)
 Parameters:
-  AntiBacklashMode: Speed cmd offset
+  AntiBacklashMode: Speed ref offset
   Offset: 25.0
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 0.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 
@@ -704,11 +755,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 10.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 
@@ -743,11 +797,14 @@ Parameters:
   AntiBacklashMode: Slave drooping
   Offset: 0.5
   BaseTorque: 3.3
-  GainTorque: 0.0
-  LoadTorque: 4.0
-  MaxTorque: 5.0
+  GainTorque: 0
+  LoadTorque: 4
+  MaxTorque: 5
   SlaveDroop: 5.0
-  MasterDroop: 0.0
+  MasterDroop: 0
+  SlaveDelay: 0
+  DegreeOffset: 0
+  DegreeGain: 0
 
 Detected Backlash Events: 16
 

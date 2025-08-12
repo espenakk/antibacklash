@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/log22.csv'
+file_path = 'Python/data/megalog2.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -426,11 +426,13 @@ while True:
     print("3. Show plots for all INVALID tests")
     print("4. Show plots for all UNACCEPTABLE tests")
     print("5. Show plots for ALL tests")
+    print("6. Show plots for TOP 20 tests")
     print("0. Exit")
     
     choice = input("Enter your choice: ")
 
     if choice == '1':
+        # ...existing code...
         if best_test_index is not None:
             test_to_plot = next((r for r in all_test_results if r['test_index'] == best_test_index), None)
             if test_to_plot:
@@ -438,20 +440,36 @@ while True:
         else:
             print("No best test found to plot.")
     elif choice == '2':
+        # ...existing code...
         tests_to_plot = [r for r in all_test_results if r['is_valid'] and r['performance_score'] is not None and r['performance_score'] < 100]
         for test in tests_to_plot:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '3':
+        # ...existing code...
         tests_to_plot = [r for r in all_test_results if not r['is_valid']]
         for test in tests_to_plot:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '4':
+        # ...existing code...
         tests_to_plot = [r for r in all_test_results if r['is_valid'] and r['performance_score'] is not None and r['performance_score'] >= 100]
         for test in tests_to_plot:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '5':
+        # ...existing code...
         for test in all_test_results:
             generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+    elif choice == '6':
+        # NEW: Top 20 overall (lowest performance_score). Only tests with a score.
+        top_tests = sorted(
+            [r for r in all_test_results if r['performance_score'] is not None],
+            key=lambda x: x['performance_score']
+        )[:20]
+        if not top_tests:
+            print("No scored tests available.")
+        else:
+            print(f"Plotting {len(top_tests)} best overall tests.")
+            for test in top_tests:
+                generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
     elif choice == '0':
         break
     else:
