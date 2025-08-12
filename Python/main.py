@@ -199,29 +199,55 @@ for test_index in test_indices:
                     reversal_indices.append(idx)
                 last_sign = current_sign
 
-    # Define speed threshold for backlash detection
-    speed_threshold = abs(df_test['SpeedRef']).max() * 0.05
-    if speed_threshold == 0: speed_threshold = 1
 
+    MIN_LEN = 25
+    SKIP_MATCHES = [8]
+    num_matches = 0
+    
     for rev_idx in reversal_indices:
-        search_df = df_test.loc[rev_idx:]
-        
-        # Backlash starts when ENC1Speed is near zero after reversal, and FC1 or FC2 is moving
-        start_condition = (np.isclose(search_df['ENC1Speed'], 0, atol=0.5)) & \
-                          ((abs(search_df['FC1Speed']) > speed_threshold) | \
-                           (abs(search_df['FC2Speed']) > speed_threshold))
-        start_events = search_df[start_condition]
-        
+        search_df = df_test.loc[rev_idx:].copy()
+    
+        starts = []
+        i = 0
+        v = search_df['SpeedRef'].to_numpy()
+
+        while i < len(v)-1:
+            if v[i+1] > v[i] and v[i] < 0:
+                num_matches += 1
+                if num_matches in SKIP_MATCHES:
+                    i += 1000
+                    continue
+                starts.append(i)
+                i += MIN_LEN
+                continue
+
+            if v[i+1] < v[i] and v[i] > 0:
+                num_matches += 1
+                if num_matches in SKIP_MATCHES:
+                    i += 1000
+                    continue
+                starts.append(i)
+                i += MIN_LEN
+                continue
+            
+            i += 1
+            
+        start_events = search_df.iloc[starts]
+        if len(start_events) >= 8:
+            start_events = start_events.drop(start_events.index[7])
+
         if start_events.empty:
             continue
         
         t_start = start_events['Time (s)'].iloc[0]
         start_idx = start_events.index[0]
+
+        # samples later, N=100 -> t=1s
+        N = 100
         
-        # Backlash ends when ENC1Speed starts moving again
+        # Backlash ends after 2 sec
         end_search_df = df_test.loc[start_idx:]
-        end_events = end_search_df[abs(end_search_df['ENC1Speed']) > speed_threshold]
-        
+        end_events = end_search_df.iloc[[min(N, len(end_search_df) - 1)]]
         if end_events.empty:
             continue
             
@@ -243,15 +269,15 @@ for test_index in test_indices:
         if duration > 0:
             backlash_results.append({'start': t_start, 'end': t_end, 'duration': duration, 'movement': movement, "IAE": iae, "ISE": ise})
 
-        #checking if we have duplicate events
-        unique = []
-        seen = set()
-        for res in backlash_results:
-            key = (round(res['start'], 3), round(res['end'], 3))
-            if key not in seen:
-                seen.add(key)
-                unique.append(res)
-        backlash_results = unique
+    #checking if we have duplicate events
+    unique = []
+    seen = set()
+    for res in backlash_results:
+        key = (round(res['start'], 3), round(res['end'], 3))
+        if key not in seen:
+            seen.add(key)
+            unique.append(res)
+    backlash_results = unique
 
     # --- Log Results & Performance Score ---
     if backlash_results:
@@ -270,7 +296,7 @@ for test_index in test_indices:
         current_score = None
         # Calculate performance score if we have 16 events and the test is valid
         # changed score from duration to movement
-        if len(backlash_results) > 10 and is_valid:
+        if len(backlash_results) > 15 and is_valid:
             sum1_8 = sum(res['movement'] for res in backlash_results[0:8])
             sum9_16 = sum(res['movement'] for res in backlash_results[8:16])
 
