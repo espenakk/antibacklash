@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 # Load the data
-file_path = 'Python/data/log20.csv'
+file_path = 'Python/data/log21.csv'
 try:
     df = pd.read_csv(file_path)
 except FileNotFoundError:
@@ -31,12 +31,13 @@ WITHIN_PERCENTAGE = 10
 ANTIBACKLASH_MODE_MAP = {
     0: "Adaptive torque",
     1: "Constant torque",
-    2: "Speed cmd offset",
+    2: "Speed ref offset",
     3: "Slave drooping",
-    4: "Actual position offset",
-    5: "Slave speed ref delay",
-    6: "Slave speed ref delay offset",
-    7: "Simple torque"
+    4: "Position offset",
+    5: "Speed ref delay",
+    6: "Speed ref delay offset",
+    7: "Simple torque",
+    8: "Position speed offset"
 }
 
 def generate_plot(df_test, test_index, backlash_results, performance_score=None):
@@ -269,7 +270,7 @@ for test_index in test_indices:
         current_score = None
         # Calculate performance score if we have 16 events and the test is valid
         # changed score from duration to movement
-        if len(backlash_results) > 10:
+        if len(backlash_results) > 10 and is_valid:
             sum1_8 = sum(res['movement'] for res in backlash_results[0:8])
             sum9_16 = sum(res['movement'] for res in backlash_results[8:16])
 
