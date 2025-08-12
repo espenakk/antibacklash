@@ -2,8 +2,7 @@ import argparse
 import pandas as pd
 from pathlib import Path
 
-def merge_logs(files, out_file, testindex_col="testindex",
-               keep_original=False, add_source=False, sort_within=False):
+def merge_logs(files, out_file, testindex_col="TestIndex"):
     merged = []
     offset = 0
 
