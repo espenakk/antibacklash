@@ -7,4 +7,4 @@
     - main.py -> the one to use
 
 Kommentarer til antibacklash:
-    Vårt testoppsett fungerer ofte dårlig ved lav speed. Neste steg som hadde vært et mulig steg for et mer reellt oppsett hadde vært joystick som input speed signal, og teste PD/PI regulering på posisjon med en FF på antall grader backlash i systemet. Vårt oppsett implementert som en P-regulator, uten FF.
+    Vårt testoppsett fungerer ofte dårlig ved lav speed. Neste steg som hadde vært et mulig steg for et mer reellt oppsett hadde vært joystick som input speed signal, og teste PD/PI regulering på posisjon med en FF på antall grader backlash i systemet. Vårt oppsett implementert som en P-regulator, uten FF. Mot slutten, uten å skikkelig få testet det, hadde vi god tro på posisjons offset regulering, som kunne tyde på å gi svært gode resultater.
