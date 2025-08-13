@@ -38,7 +38,7 @@ ANTIBACKLASH_MODE_MAP = {
     8: "Position speed offset"
 }
 
-def generate_plot(df_test, test_index, backlash_results, performance_score=None):
+def generate_plot(df_test, test_index, backlash_results, torque_AB_disabled, torque_AD_enabled, performance_score=None):
     # Create a new figure for each test index with 4 subplots
     fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(12, 22), 
                                            gridspec_kw={'height_ratios': [3, 3, 3, 1.5]})
@@ -75,7 +75,7 @@ def generate_plot(df_test, test_index, backlash_results, performance_score=None)
     ax3.set_ylabel('Torque')
     ax3.grid(True)
     ax3.legend(loc='upper left')
-    ax3.set_title('Torque vs. Time')
+    ax3.set_title(f'Torque vs. Time\nMean AB disabled: {torque_AB_disabled:.2f}Nm\nMean AB enabled: {torque_AD_enabled:.2f}Nm')
 
     # Add backlash lines to plots
     for res in backlash_results:
@@ -205,6 +205,8 @@ for test_index in test_indices:
         motor_delta = abs(motor_pos_end - motor_pos_start)
         encoder_delta = movement_local  # already abs ENC1 position change
         backlash_deg = max(0.0, motor_delta - encoder_delta)
+        torque_max_series = np.maximum(df_test['FC1Torque'].iloc[start_sample_index:end_idx_local+1].to_numpy(), df_test['FC2Torque'].iloc[start_sample_index:end_idx_local+1].to_numpy())
+        torque_max = torque_max_series.mean()
         backlash_results.append({
             'start': t_start_local,
             'end': t_end_local,
@@ -213,7 +215,8 @@ for test_index in test_indices:
             'backlash_deg': backlash_deg,
             'motor_delta': motor_delta,
             'encoder_delta': encoder_delta,
-            'driving_motor': driving_motor_pos_col
+            'driving_motor': driving_motor_pos_col,
+            "torque_max": torque_max
         })
 
     for idx, s in enumerate(sign_series):
@@ -270,6 +273,13 @@ for test_index in test_indices:
             if sum1_8 > 0:
                 current_speed_score = (sum9_16 / sum1_8) * 100.0
 
+            max_torque_list = [e['torque_max'] for e in backlash_results]
+            max_torque_first = np.mean(max_torque_list[0:8])
+            max_torque_last = np.mean(max_torque_list[8:16])
+        else:
+            max_torque_first = 0
+            max_torque_last = 0
+
         backlash_deg_list = [e.get('backlash_deg', 0.0) for e in backlash_results]
         mean_backlash_first8 = np.mean(backlash_deg_list[0:8]) if len(backlash_deg_list) >= 8 else np.nan
         mean_backlash_last8 = np.mean(backlash_deg_list[8:16]) if len(backlash_deg_list) >= 16 else np.nan
@@ -292,7 +302,9 @@ for test_index in test_indices:
             'df_test': df_test,
             'mean_backlash_first8': mean_backlash_first8,
             'mean_backlash_last8': mean_backlash_last8,
-            'backlash_reduction_pct': backlash_reduction_pct
+            'backlash_reduction_pct': backlash_reduction_pct,
+            "max_torque_first": max_torque_first,
+            'max_torque_last': max_torque_last
         })
 
 
@@ -357,6 +369,10 @@ with open(output_filename, 'w', encoding='utf-8') as f:
             result_string += f"Mean Backlash AB Enabled: {result['mean_backlash_last8']:.3f}°\n"
         if result.get('backlash_reduction_pct') is not None:
             result_string += f"Backlash Reduction %: {result['backlash_reduction_pct']:.2f}%\n"
+        if 'max_torque_first' in result:
+            result_string += f"Mean torque AB disabled: {result['max_torque_first']:.2f}Nm\n"
+        if 'max_torque_last' in result:
+            result_string += f"Mean torque AB enbled {result['max_torque_last']:.2f}Nm\n"
      
         result_string += "\nBacklash Events:\n"
         for i, res in enumerate(result['backlash_results']):
@@ -391,27 +407,27 @@ while True:
         if best_test_index is not None:
             test_to_plot = next((r for r in all_test_results if r['test_index'] == best_test_index), None)
             if test_to_plot:
-                generate_plot(test_to_plot['df_test'], test_to_plot['test_index'], test_to_plot['backlash_results'], test_to_plot['performance_score'])
+                generate_plot(test_to_plot['df_test'], test_to_plot['test_index'], test_to_plot['backlash_results'], test_to_plot['max_torque_first'], test_to_plot['max_torque_last'], test_to_plot['performance_score'])
         else:
             print("No best test found to plot.")
     elif choice == '2':
         tests_to_plot = [r for r in all_test_results if r['is_valid'] and r['performance_score'] is not None and r['performance_score'] < 100]
         for test in tests_to_plot:
-            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['max_torque_first'], test['max_torque_last'], test['performance_score'])
     elif choice == '3':
         tests_to_plot = [r for r in all_test_results if not r['is_valid']]
         for test in tests_to_plot:
-            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['max_torque_first'], test['max_torque_last'], test['performance_score'])
     elif choice == '4':
         tests_to_plot = [r for r in all_test_results if r['is_valid'] and r['performance_score'] is not None and r['performance_score'] >= 100]
         for test in tests_to_plot:
-            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['max_torque_first'], test['max_torque_last'], test['performance_score'])
     elif choice == '5':
         for test in all_test_results:
-            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+            generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['max_torque_first'], test['max_torque_last'], test['performance_score'])
     elif choice == '6':
         top_tests = sorted(
-            [r for r in all_test_results if r['performance_score'] is not None],
+            [r for r in all_test_results if r['performance_score'] is not None and r['params'].get("AntiBacklashMode") != 7],
             key=lambda x: x['performance_score'],
             reverse=True
         )[:20]
@@ -420,7 +436,7 @@ while True:
         else:
             print(f"Plotting {len(top_tests)} best overall tests.")
             for test in top_tests:
-                generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+                generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['max_torque_first'], test['max_torque_last'], test['performance_score'])
     elif choice == '7':
         print("Available Modes:")
         for k,v in ANTIBACKLASH_MODE_MAP.items():
@@ -441,14 +457,14 @@ while True:
         if selected_mode is None:
             print("Could not identify mode.")
         else:
-            mode_tests = [r for r in all_test_results if r['params'].get('AntiBacklashMode') == selected_mode and r['performance_score'] is not None]
+            mode_tests = [r for r in all_test_results if r['params'].get('AntiBacklashMode') == selected_mode and r['performance_score'] is not None and r["is_valid"]]
             if not mode_tests:
                 print("No tests found for that mode with a performance score.")
             else:
                 mode_tests_sorted = sorted(mode_tests, key=lambda x: x['performance_score'], reverse=True)[:5]
                 print(f"Plotting top {len(mode_tests_sorted)} tests for mode {selected_mode}: {ANTIBACKLASH_MODE_MAP[selected_mode]}")
                 for test in mode_tests_sorted:
-                    generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['performance_score'])
+                    generate_plot(test['df_test'], test['test_index'], test['backlash_results'], test['max_torque_first'], test['max_torque_last'], test['performance_score'])
     elif choice == '0':
         break
     else:
